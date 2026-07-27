@@ -597,6 +597,87 @@
     color: var(--ink-mute);
   }
 
+
+  /* News ticker */
+  .news-ticker {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: stretch;
+    margin: 0 0 36px;
+    border: 1px solid var(--line);
+    background: #fff;
+    overflow: hidden;
+  }
+
+  .news-ticker-label {
+    display: flex;
+    align-items: center;
+    padding: 0 18px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #fff;
+    background: var(--crimson);
+    white-space: nowrap;
+  }
+
+  .news-ticker-viewport {
+    overflow: hidden;
+    mask-image: linear-gradient(90deg, transparent, #000 24px, #000 calc(100% - 24px), transparent);
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 24px, #000 calc(100% - 24px), transparent);
+  }
+
+  .news-ticker-track {
+    display: flex;
+    width: max-content;
+    gap: 0;
+    animation: news-ticker-scroll 42s linear infinite;
+  }
+
+  .news-ticker:hover .news-ticker-track,
+  .news-ticker:focus-within .news-ticker-track {
+    animation-play-state: paused;
+  }
+
+  .news-ticker-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 28px;
+    white-space: nowrap;
+    color: var(--ink);
+    text-decoration: none;
+    font-size: 0.95rem;
+  }
+
+  .news-ticker-item:hover { color: var(--crimson); }
+
+  .news-ticker-item .news-date {
+    flex: none;
+  }
+
+  .news-ticker-sep {
+    color: var(--gold);
+    opacity: 0.85;
+    user-select: none;
+  }
+
+  @keyframes news-ticker-scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .news-ticker-track { animation: none; }
+    .news-ticker-viewport { overflow-x: auto; }
+  }
+
+  @media (max-width: 720px) {
+    .news-ticker { grid-template-columns: 1fr; }
+    .news-ticker-label { justify-content: center; padding: 8px 12px; }
+  }
+
   /* News */
   .news-list { list-style: none; }
 
@@ -909,12 +990,12 @@
       <span class="brand-cn">河北省虚实融合无人系统研发重点实验室</span>
     </a>
     <nav class="nav" aria-label="主导航">
+      <a href="#news">新闻</a>
       <a href="#about">简介</a>
       <a href="#research">方向</a>
       <a href="#academic">学术委员会</a>
       <a href="#people">科研团队</a>
       <a href="#management">管理委员会</a>
-      <a href="news/">新闻</a>
       <a href="#join">加入</a>
       <a class="nav-en" href="index_en.html">EN</a>
     </nav>
@@ -953,7 +1034,37 @@
   </div>
 </section>
 
-<section class="section section-alt" id="about">
+<section class="section section-alt" id="news">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <p class="sec-eyebrow">News</p>
+        <h2 class="sec-title">新闻动态</h2>
+      </div>
+      <p class="sec-desc">实验室建设进展与代表性学术动态。</p>
+    </div>
+    <div class="news-ticker reveal" aria-label="滚动新闻">
+      <div class="news-ticker-label">News</div>
+      <div class="news-ticker-viewport">
+        <div class="news-ticker-track">
+          <a class="news-ticker-item" href="news/2026-07-27-visit.html"><span class="news-date">2026.07.27</span><span class="news-ticker-sep">/</span><span>学术委员会委员李默、沈震来访商讨实验室建设事宜</span></a><a class="news-ticker-item" href="news/2026-07-20-approved.html"><span class="news-date">2026.07.20</span><span class="news-ticker-sep">/</span><span>河北省虚实融合无人系统研发重点实验室（RIAS）获批建立，王永才教授任实验室主任</span></a><a class="news-ticker-item" href="news/2026-06-30-eccv.html"><span class="news-date">2026.06.30</span><span class="news-ticker-sep">/</span><span>ECCV 2026 +1，Congratulations to Kang Yang</span></a><a class="news-ticker-item" href="news/2026-05-01-icml.html"><span class="news-date">2026.05.01</span><span class="news-ticker-sep">/</span><span>ICML 2026 +1，Congratulations to Guoxin Lian</span></a><a class="news-ticker-item" href="news/2026-02-21-cvpr.html"><span class="news-date">2026.02.21</span><span class="news-ticker-sep">/</span><span>CVPR 2026 +2，Congratulations to Peng Wang and Shuo Wang</span></a>
+          <a class="news-ticker-item" href="news/2026-07-27-visit.html"><span class="news-date">2026.07.27</span><span class="news-ticker-sep">/</span><span>学术委员会委员李默、沈震来访商讨实验室建设事宜</span></a><a class="news-ticker-item" href="news/2026-07-20-approved.html"><span class="news-date">2026.07.20</span><span class="news-ticker-sep">/</span><span>河北省虚实融合无人系统研发重点实验室（RIAS）获批建立，王永才教授任实验室主任</span></a><a class="news-ticker-item" href="news/2026-06-30-eccv.html"><span class="news-date">2026.06.30</span><span class="news-ticker-sep">/</span><span>ECCV 2026 +1，Congratulations to Kang Yang</span></a><a class="news-ticker-item" href="news/2026-05-01-icml.html"><span class="news-date">2026.05.01</span><span class="news-ticker-sep">/</span><span>ICML 2026 +1，Congratulations to Guoxin Lian</span></a><a class="news-ticker-item" href="news/2026-02-21-cvpr.html"><span class="news-date">2026.02.21</span><span class="news-ticker-sep">/</span><span>CVPR 2026 +2，Congratulations to Peng Wang and Shuo Wang</span></a>
+        </div>
+      </div>
+    </div>
+    <ul class="news-list reveal">
+      <li class="news-item"><span class="news-date">2026.07.27</span><a class="news-link" href="news/2026-07-27-visit.html">学术委员会委员李默、沈震来访商讨实验室建设事宜</a></li>
+      <li class="news-item"><span class="news-date">2026.07.20</span><a class="news-link" href="news/2026-07-20-approved.html">河北省虚实融合无人系统研发重点实验室（RIAS）获批建立，王永才教授任实验室主任</a></li>
+      <li class="news-item"><span class="news-date">2026.06.30</span><a class="news-link" href="news/2026-06-30-eccv.html">ECCV 2026 +1，Congratulations to Kang Yang</a></li>
+      <li class="news-item"><span class="news-date">2026.05.01</span><a class="news-link" href="news/2026-05-01-icml.html">ICML 2026 +1，Congratulations to Guoxin Lian</a></li>
+      <li class="news-item"><span class="news-date">2026.02.21</span><a class="news-link" href="news/2026-02-21-cvpr.html">CVPR 2026 +2，Congratulations to Peng Wang and Shuo Wang</a></li>
+    </ul>
+    <a class="news-more reveal" href="news/">查看全部新闻 →</a>
+  </div>
+</section>
+
+
+<section class="section" id="about">
   <div class="wrap">
     <div class="sec-head reveal">
       <div>
@@ -980,7 +1091,7 @@
   </div>
 </section>
 
-<section class="section" id="research">
+<section class="section section-alt" id="research">
   <div class="wrap">
     <div class="sec-head reveal">
       <div>
@@ -1020,7 +1131,7 @@
 </section>
 
 <!-- PEOPLE START -->
-<section class="section section-alt" id="academic">
+<section class="section" id="academic">
   <div class="wrap">
     <div class="sec-head reveal">
       <div>
@@ -1142,7 +1253,7 @@
   </div>
 </section>
 
-<section class="section" id="people">
+<section class="section section-alt" id="people">
   <div class="wrap">
     <div class="sec-head reveal">
       <div>
@@ -1234,7 +1345,7 @@
   </div>
 </section>
 
-<section class="section section-alt" id="management">
+<section class="section" id="management">
   <div class="wrap">
     <div class="sec-head reveal">
       <div>
@@ -1276,26 +1387,6 @@
   </div>
 </section>
 <!-- PEOPLE END -->
-
-<section class="section" id="news">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <div>
-        <p class="sec-eyebrow">News</p>
-        <h2 class="sec-title">新闻动态</h2>
-      </div>
-      <p class="sec-desc">实验室建设进展与代表性学术动态。</p>
-    </div>
-    <ul class="news-list reveal">
-      <li class="news-item"><span class="news-date">2026.07.27</span><a class="news-link" href="news/2026-07-27-visit.html">学术委员会委员李默、沈震来访商讨实验室建设事宜</a></li>
-      <li class="news-item"><span class="news-date">2026.07.20</span><a class="news-link" href="news/2026-07-20-approved.html">河北省虚实融合无人系统研发重点实验室（RIAS）获批建立，王永才教授任实验室主任</a></li>
-      <li class="news-item"><span class="news-date">2026.06.30</span><a class="news-link" href="news/2026-06-30-eccv.html">ECCV 2026 +1，Congratulations to Kang Yang</a></li>
-      <li class="news-item"><span class="news-date">2026.05.01</span><a class="news-link" href="news/2026-05-01-icml.html">ICML 2026 +1，Congratulations to Guoxin Lian</a></li>
-      <li class="news-item"><span class="news-date">2026.02.21</span><a class="news-link" href="news/2026-02-21-cvpr.html">CVPR 2026 +2，Congratulations to Peng Wang and Shuo Wang</a></li>
-    </ul>
-    <a class="news-more reveal" href="news/">查看全部新闻 →</a>
-  </div>
-</section>
 
 <section class="join-band" id="join">
   <div class="wrap reveal">
