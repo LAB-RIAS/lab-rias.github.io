@@ -598,84 +598,181 @@
   }
 
 
-  /* News ticker */
-  .news-ticker {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    align-items: stretch;
-    margin: 0 0 36px;
-    border: 1px solid var(--line);
-    background: #fff;
+  /* News carousel */
+  .news-carousel {
+    position: relative;
+    margin: 0 0 40px;
+    border-radius: 0;
     overflow: hidden;
+    background: #1a1c22;
+    aspect-ratio: 21 / 9;
+    min-height: 280px;
+    max-height: 460px;
   }
 
-  .news-ticker-label {
-    display: flex;
-    align-items: center;
-    padding: 0 18px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.72rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
+  .news-carousel-track {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .news-slide {
+    position: absolute;
+    inset: 0;
+    display: block;
     color: #fff;
-    background: var(--crimson);
-    white-space: nowrap;
-  }
-
-  .news-ticker-viewport {
-    overflow: hidden;
-    mask-image: linear-gradient(90deg, transparent, #000 24px, #000 calc(100% - 24px), transparent);
-    -webkit-mask-image: linear-gradient(90deg, transparent, #000 24px, #000 calc(100% - 24px), transparent);
-  }
-
-  .news-ticker-track {
-    display: flex;
-    width: max-content;
-    gap: 0;
-    animation: news-ticker-scroll 42s linear infinite;
-  }
-
-  .news-ticker:hover .news-ticker-track,
-  .news-ticker:focus-within .news-ticker-track {
-    animation-play-state: paused;
-  }
-
-  .news-ticker-item {
-    display: inline-flex;
-    align-items: center;
-    gap: 14px;
-    padding: 14px 28px;
-    white-space: nowrap;
-    color: var(--ink);
     text-decoration: none;
-    font-size: 0.95rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.7s ease, visibility 0.7s ease;
   }
 
-  .news-ticker-item:hover { color: var(--crimson); }
-
-  .news-ticker-item .news-date {
-    flex: none;
+  .news-slide.is-active {
+    opacity: 1;
+    visibility: visible;
+    z-index: 1;
   }
 
-  .news-ticker-sep {
+  .news-slide-media {
+    position: absolute;
+    inset: 0;
+  }
+
+  .news-slide-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    transform: scale(1.04);
+    transition: transform 6.5s ease;
+  }
+
+  .news-slide.is-active .news-slide-media img {
+    transform: scale(1);
+  }
+
+  .news-slide-veil {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(90deg, rgba(20,23,31,0.82) 0%, rgba(20,23,31,0.45) 48%, rgba(20,23,31,0.18) 100%),
+      linear-gradient(0deg, rgba(20,23,31,0.72) 0%, transparent 55%);
+  }
+
+  .news-slide-badge {
+    position: absolute;
+    top: 28px;
+    right: 28px;
+    z-index: 2;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    padding: 8px 12px;
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.35);
+    background: rgba(174,11,42,0.72);
+  }
+
+  .news-slide-body {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    padding: 36px 40px 44px;
+    max-width: 42rem;
+  }
+
+  .news-slide-date {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
     color: var(--gold);
-    opacity: 0.85;
-    user-select: none;
+    margin-bottom: 10px;
   }
 
-  @keyframes news-ticker-scroll {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
+  .news-slide-title {
+    font-family: 'Noto Serif SC', 'Cormorant Garamond', serif;
+    font-size: clamp(1.25rem, 2.4vw, 1.85rem);
+    font-weight: 600;
+    line-height: 1.35;
+    color: #fff;
+    text-wrap: balance;
   }
 
-  @media (prefers-reduced-motion: reduce) {
-    .news-ticker-track { animation: none; }
-    .news-ticker-viewport { overflow-x: auto; }
+  .news-carousel-nav {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    pointer-events: none;
+  }
+
+  .news-carousel-btn {
+    pointer-events: auto;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 42px;
+    height: 42px;
+    border: 1px solid rgba(255,255,255,0.35);
+    background: rgba(20,23,31,0.35);
+    color: #fff;
+    cursor: pointer;
+    font-size: 1.25rem;
+    line-height: 1;
+    display: grid;
+    place-items: center;
+    transition: background 0.2s ease, border-color 0.2s ease;
+  }
+
+  .news-carousel-btn:hover {
+    background: rgba(174,11,42,0.85);
+    border-color: rgba(255,255,255,0.55);
+  }
+
+  .news-carousel-btn.prev { left: 16px; }
+  .news-carousel-btn.next { right: 16px; }
+
+  .news-carousel-dots {
+    position: absolute;
+    left: 40px;
+    bottom: 16px;
+    z-index: 3;
+    display: flex;
+    gap: 8px;
+  }
+
+  .news-carousel-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 0;
+    border: 0;
+    padding: 0;
+    background: rgba(255,255,255,0.35);
+    cursor: pointer;
+  }
+
+  .news-carousel-dot.is-active {
+    background: var(--gold);
+    width: 22px;
   }
 
   @media (max-width: 720px) {
-    .news-ticker { grid-template-columns: 1fr; }
-    .news-ticker-label { justify-content: center; padding: 8px 12px; }
+    .news-carousel {
+      aspect-ratio: 16 / 11;
+      max-height: none;
+    }
+    .news-slide-body { padding: 24px 20px 40px; max-width: none; }
+    .news-carousel-btn { display: none; }
+    .news-carousel-dots { left: 20px; }
+    .news-slide-badge { top: 16px; right: 16px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .news-slide,
+    .news-slide-media img { transition: none; }
   }
 
   /* News */
@@ -1043,13 +1140,70 @@
       </div>
       <p class="sec-desc">实验室建设进展与代表性学术动态。</p>
     </div>
-    <div class="news-ticker reveal" aria-label="滚动新闻">
-      <div class="news-ticker-label">News</div>
-      <div class="news-ticker-viewport">
-        <div class="news-ticker-track">
-          <a class="news-ticker-item" href="news/2026-07-27-visit.html"><span class="news-date">2026.07.27</span><span class="news-ticker-sep">/</span><span>学术委员会委员李默、沈震来访商讨实验室建设事宜</span></a><a class="news-ticker-item" href="news/2026-07-20-approved.html"><span class="news-date">2026.07.20</span><span class="news-ticker-sep">/</span><span>河北省虚实融合无人系统研发重点实验室（RIAS）获批建立，王永才教授任实验室主任</span></a><a class="news-ticker-item" href="news/2026-06-30-eccv.html"><span class="news-date">2026.06.30</span><span class="news-ticker-sep">/</span><span>ECCV 2026 +1，Congratulations to Kang Yang</span></a><a class="news-ticker-item" href="news/2026-05-01-icml.html"><span class="news-date">2026.05.01</span><span class="news-ticker-sep">/</span><span>ICML 2026 +1，Congratulations to Guoxin Lian</span></a><a class="news-ticker-item" href="news/2026-02-21-cvpr.html"><span class="news-date">2026.02.21</span><span class="news-ticker-sep">/</span><span>CVPR 2026 +2，Congratulations to Peng Wang and Shuo Wang</span></a>
-          <a class="news-ticker-item" href="news/2026-07-27-visit.html"><span class="news-date">2026.07.27</span><span class="news-ticker-sep">/</span><span>学术委员会委员李默、沈震来访商讨实验室建设事宜</span></a><a class="news-ticker-item" href="news/2026-07-20-approved.html"><span class="news-date">2026.07.20</span><span class="news-ticker-sep">/</span><span>河北省虚实融合无人系统研发重点实验室（RIAS）获批建立，王永才教授任实验室主任</span></a><a class="news-ticker-item" href="news/2026-06-30-eccv.html"><span class="news-date">2026.06.30</span><span class="news-ticker-sep">/</span><span>ECCV 2026 +1，Congratulations to Kang Yang</span></a><a class="news-ticker-item" href="news/2026-05-01-icml.html"><span class="news-date">2026.05.01</span><span class="news-ticker-sep">/</span><span>ICML 2026 +1，Congratulations to Guoxin Lian</span></a><a class="news-ticker-item" href="news/2026-02-21-cvpr.html"><span class="news-date">2026.02.21</span><span class="news-ticker-sep">/</span><span>CVPR 2026 +2，Congratulations to Peng Wang and Shuo Wang</span></a>
+    <div class="news-carousel reveal" aria-roledescription="carousel" aria-label="新闻图片轮播">
+      <div class="news-carousel-track">
+      <a class="news-slide is-active" href="news/2026-07-27-visit.html">
+        <div class="news-slide-media">
+          <img src="news/photos/7-27.jpg" alt="李默、沈震来访合影" width="1600" height="686" loading="eager"/>
+          <div class="news-slide-veil" aria-hidden="true"></div>
         </div>
+        
+        <div class="news-slide-body">
+          <span class="news-slide-date">2026.07.27</span>
+          <div class="news-slide-title">学术委员会委员李默、沈震来访商讨实验室建设事宜</div>
+        </div>
+      </a>
+      <a class="news-slide" href="news/2026-07-20-approved.html" aria-hidden="true" tabindex="-1">
+        <div class="news-slide-media">
+          <img src="news/photos/7-20.jpg" alt="省重点实验室公示名单截图" width="1600" height="686" loading="lazy"/>
+          <div class="news-slide-veil" aria-hidden="true"></div>
+        </div>
+        
+        <div class="news-slide-body">
+          <span class="news-slide-date">2026.07.20</span>
+          <div class="news-slide-title">河北省虚实融合无人系统研发重点实验室（RIAS）获批建立，王永才教授任实验室主任</div>
+        </div>
+      </a>
+      <a class="news-slide" href="news/2026-06-30-eccv.html" aria-hidden="true" tabindex="-1">
+        <div class="news-slide-media">
+          <img src="rias-hero-bg.png" alt="ECCV 2026 +1，Congratulations to Kang Yang" width="1600" height="686" loading="lazy"/>
+          <div class="news-slide-veil" aria-hidden="true"></div>
+        </div>
+        <span class="news-slide-badge">ECCV 2026</span>
+        <div class="news-slide-body">
+          <span class="news-slide-date">2026.06.30</span>
+          <div class="news-slide-title">ECCV 2026 +1，Congratulations to Kang Yang</div>
+        </div>
+      </a>
+      <a class="news-slide" href="news/2026-05-01-icml.html" aria-hidden="true" tabindex="-1">
+        <div class="news-slide-media">
+          <img src="rias-hero-bg.png" alt="ICML 2026 +1，Congratulations to Guoxin Lian" width="1600" height="686" loading="lazy"/>
+          <div class="news-slide-veil" aria-hidden="true"></div>
+        </div>
+        <span class="news-slide-badge">ICML 2026</span>
+        <div class="news-slide-body">
+          <span class="news-slide-date">2026.05.01</span>
+          <div class="news-slide-title">ICML 2026 +1，Congratulations to Guoxin Lian</div>
+        </div>
+      </a>
+      <a class="news-slide" href="news/2026-02-21-cvpr.html" aria-hidden="true" tabindex="-1">
+        <div class="news-slide-media">
+          <img src="rias-hero-bg.png" alt="CVPR 2026 +2，Congratulations to Peng Wang and Shuo Wang" width="1600" height="686" loading="lazy"/>
+          <div class="news-slide-veil" aria-hidden="true"></div>
+        </div>
+        <span class="news-slide-badge">CVPR 2026</span>
+        <div class="news-slide-body">
+          <span class="news-slide-date">2026.02.21</span>
+          <div class="news-slide-title">CVPR 2026 +2，Congratulations to Peng Wang and Shuo Wang</div>
+        </div>
+      </a>
+      </div>
+      <div class="news-carousel-nav" aria-hidden="true">
+        <button type="button" class="news-carousel-btn prev" aria-label="Previous">‹</button>
+        <button type="button" class="news-carousel-btn next" aria-label="Next">›</button>
+      </div>
+      <div class="news-carousel-dots" role="tablist">
+        <button type="button" class="news-carousel-dot is-active" aria-label="Go to slide 1"></button><button type="button" class="news-carousel-dot" aria-label="Go to slide 2"></button><button type="button" class="news-carousel-dot" aria-label="Go to slide 3"></button><button type="button" class="news-carousel-dot" aria-label="Go to slide 4"></button><button type="button" class="news-carousel-dot" aria-label="Go to slide 5"></button>
       </div>
     </div>
     <ul class="news-list reveal">
@@ -1424,6 +1578,45 @@
     entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add('is-in'); });
   }, { threshold: 0.14, rootMargin: '0px 0px -6% 0px' });
   document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+
+  (function () {
+    const root = document.querySelector('.news-carousel');
+    if (!root) return;
+    const slides = Array.from(root.querySelectorAll('.news-slide'));
+    const dots = Array.from(root.querySelectorAll('.news-carousel-dot'));
+    const prev = root.querySelector('.news-carousel-btn.prev');
+    const next = root.querySelector('.news-carousel-btn.next');
+    let i = 0;
+    let timer = null;
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function show(n) {
+      i = (n + slides.length) % slides.length;
+      slides.forEach((s, idx) => s.classList.toggle('is-active', idx === i));
+      dots.forEach((d, idx) => d.classList.toggle('is-active', idx === i));
+    }
+
+    function start() {
+      if (reduce || slides.length < 2) return;
+      stop();
+      timer = window.setInterval(() => show(i + 1), 5200);
+    }
+
+    function stop() {
+      if (timer) window.clearInterval(timer);
+      timer = null;
+    }
+
+    prev && prev.addEventListener('click', () => { show(i - 1); start(); });
+    next && next.addEventListener('click', () => { show(i + 1); start(); });
+    dots.forEach((d, idx) => d.addEventListener('click', () => { show(idx); start(); }));
+    root.addEventListener('mouseenter', stop);
+    root.addEventListener('mouseleave', start);
+    root.addEventListener('focusin', stop);
+    root.addEventListener('focusout', start);
+    show(0);
+    start();
+  })();
 </script>
 </body>
 </html>
