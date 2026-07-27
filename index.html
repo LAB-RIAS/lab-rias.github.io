@@ -1,0 +1,1274 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>RIAS — 河北省虚实融合无人系统研发重点实验室</title>
+<meta name="description" content="河北省虚实融合无人系统研发重点实验室（RIAS）。依托中国人民大学雄安未来智造产业研究院，主任王永才。聚焦虚实映射、群体协同感知、多智能体决策优化、虚实融合多智能体云脑平台与测试系统及跨域集群应用。"/>
+<meta name="keywords" content="RIAS,虚实融合,无人系统,省重点实验室,王永才,3D高斯泼溅,协同感知,多智能体,云脑平台,低空经济"/>
+<meta name="author" content="RIAS Lab"/>
+<meta name="theme-color" content="#ae0b2a"/>
+<link rel="canonical" href="https://lab-rias.github.io/"/>
+<link rel="alternate" hreflang="zh-CN" href="https://lab-rias.github.io/"/>
+<link rel="alternate" hreflang="en" href="https://lab-rias.github.io/index_en.html"/>
+<meta property="og:type" content="website"/>
+<meta property="og:locale" content="zh_CN"/>
+<meta property="og:title" content="RIAS — 河北省虚实融合无人系统研发重点实验室"/>
+<meta property="og:description" content="河北省虚实融合无人系统研发重点实验室（RIAS）。学科类省重点实验室，服务电子信息、先进制造与低空经济。"/>
+<meta property="og:url" content="https://lab-rias.github.io/"/>
+<meta property="og:image" content="https://lab-rias.github.io/rias-hero-bg.png"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&amp;family=Noto+Serif+SC:wght@400;600;700&amp;family=Noto+Sans+SC:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --ink: #14171f;
+    --ink-soft: #3a3f4d;
+    --ink-mute: #6b7280;
+    --paper: #f6f7f9;
+    --paper-deep: #eef0f4;
+    --line: #d5d9e2;
+    --crimson: #ae0b2a;
+    --crimson-deep: #8a0821;
+    --ruc-red: #ae0b2a;
+    --gold: #b8954a;
+    --gold-soft: rgba(184,149,74,0.18);
+    --hero-ink: #ae0b2a;
+    --max: 1120px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 16px;
+    color: var(--ink);
+    background: var(--paper);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: inherit; }
+
+  /* ── Top bar ── */
+  .topbar {
+    position: fixed;
+    inset: 0 0 auto 0;
+    z-index: 100;
+    height: 72px;
+    display: flex;
+    align-items: center;
+    background: var(--ruc-red);
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+  }
+
+  .topbar-inner {
+    width: min(var(--max), calc(100% - 48px));
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    text-decoration: none;
+    color: #fff;
+  }
+
+  .brand-logo {
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+    background: #fff;
+    box-shadow: 0 0 0 1px rgba(255,255,255,0.25);
+  }
+
+  .brand-mark {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 1.85rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    line-height: 1;
+  }
+
+  .brand-mark .ri,
+  .hero-brand .ri,
+  .foot-brand .ri { color: var(--gold); }
+
+  /* 红底上略提亮，保持 AS「红」侧可读 */
+  .brand-mark .as,
+  .hero-brand .as,
+  .foot-brand .as { color: #ffc9ce; }
+
+  .brand-divider {
+    width: 1px;
+    height: 28px;
+    background: rgba(255,255,255,0.22);
+  }
+
+  .brand-cn {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 0.78rem;
+    line-height: 1.35;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    max-width: 11em;
+  }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .nav a {
+    text-decoration: none;
+    color: rgba(255,255,255,0.78);
+    font-size: 0.88rem;
+    padding: 8px 12px;
+    transition: color 0.2s;
+  }
+
+  .nav a:hover { color: #fff; }
+
+  .nav .nav-en {
+    margin-left: 8px;
+    border: 1px solid rgba(255,255,255,0.28);
+    padding: 6px 12px;
+    color: #fff;
+  }
+
+  .nav .nav-en:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+  }
+
+  /* ── Hero ── */
+  .hero {
+    position: relative;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    color: #fff;
+    overflow: hidden;
+    background: var(--hero-ink);
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg, rgba(174,11,42,0.72) 0%, rgba(174,11,42,0.82) 45%, rgba(138,8,33,0.94) 100%),
+      url('rias-hero-bg.png') center / cover no-repeat;
+    transform: scale(1.04);
+    animation: hero-drift 28s ease-in-out infinite alternate;
+  }
+
+  @keyframes hero-drift {
+    from { transform: scale(1.04) translate3d(0, 0, 0); }
+    to { transform: scale(1.08) translate3d(-1.2%, -0.8%, 0); }
+  }
+
+  .hero-veil {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 70% 55% at 75% 30%, rgba(255,210,140,0.16), transparent 55%),
+      linear-gradient(90deg, rgba(120,6,28,0.45) 0%, transparent 58%);
+    pointer-events: none;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    width: min(var(--max), calc(100% - 48px));
+    margin: 0 auto;
+    padding: 108px 0 40px;
+  }
+
+  .hero-kicker {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+    opacity: 0;
+    animation: rise 0.9s 0.15s ease forwards;
+  }
+
+  .hero-name-row {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 0.55em 0.85em;
+    max-width: 100%;
+    margin-bottom: 14px;
+    opacity: 0;
+    animation: rise 0.95s 0.28s ease forwards;
+  }
+
+  .hero-brand-line {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: baseline;
+    gap: 0.55em;
+    min-width: 0;
+  }
+
+  .hero-brand {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: clamp(2.4rem, 5.5vw, 4.4rem);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    line-height: 0.95;
+    margin: 0;
+    flex-shrink: 0;
+  }
+
+  .hero-logo {
+    width: clamp(88px, 12vw, 132px);
+    height: clamp(88px, 12vw, 132px);
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+    background: #fff;
+    box-shadow: 0 8px 28px rgba(0,0,0,0.22);
+  }
+
+  .hero-en {
+    font-family: 'Cormorant Garamond', 'Noto Serif SC', serif;
+    font-size: clamp(0.78rem, 1.45vw, 1.28rem);
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    line-height: 1.2;
+    color: rgba(255,255,255,0.92);
+    margin: 0;
+    white-space: nowrap;
+  }
+
+  .hero-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(1.25rem, 2.4vw, 1.75rem);
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    line-height: 1.45;
+    max-width: 48em;
+    margin-bottom: 14px;
+    opacity: 0;
+    animation: rise 0.95s 0.4s ease forwards;
+  }
+
+  .hero-lead {
+    font-size: 1.02rem;
+    font-weight: 300;
+    color: rgba(255,255,255,0.78);
+    max-width: 52em;
+    line-height: 1.85;
+    margin-bottom: 24px;
+    opacity: 0;
+    animation: rise 0.95s 0.52s ease forwards;
+  }
+
+  .hero-cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    opacity: 0;
+    animation: rise 0.95s 0.64s ease forwards;
+  }
+
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(22px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 46px;
+    padding: 0 22px;
+    text-decoration: none;
+    font-size: 0.92rem;
+    letter-spacing: 0.04em;
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+  }
+
+  .btn-primary {
+    background: #fff;
+    color: var(--ruc-red);
+    border: 1px solid #fff;
+  }
+
+  .btn-primary:hover {
+    background: rgba(255,255,255,0.9);
+    color: var(--crimson-deep);
+  }
+
+  .btn-ghost {
+    background: transparent;
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.55);
+  }
+
+  .btn-ghost:hover {
+    border-color: #fff;
+    background: rgba(255,255,255,0.12);
+    color: #fff;
+  }
+
+  .hero-meta {
+    position: relative;
+    z-index: 2;
+    border-top: 1px solid rgba(255,255,255,0.18);
+    background: rgba(120,6,28,0.55);
+    backdrop-filter: blur(8px);
+  }
+
+  .hero-meta-inner {
+    width: min(var(--max), calc(100% - 48px));
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    padding: 22px 0;
+  }
+
+  .meta-item {
+    padding: 4px 16px 4px 0;
+    border-right: 1px solid rgba(255,255,255,0.12);
+  }
+
+  .meta-item:last-child { border-right: none; }
+
+  .meta-label {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+
+  .meta-value {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.02rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+  }
+
+  /* ── Sections ── */
+  .section {
+    padding: 88px 0;
+  }
+
+  .section-alt {
+    background: #fff;
+  }
+
+  .wrap {
+    width: min(var(--max), calc(100% - 48px));
+    margin: 0 auto;
+  }
+
+  .sec-head {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr);
+    gap: 32px 64px;
+    margin-bottom: 48px;
+    align-items: end;
+  }
+
+  .sec-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+
+  .sec-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(1.8rem, 3.2vw, 2.35rem);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    line-height: 1.25;
+  }
+
+  .sec-desc {
+    color: var(--ink-soft);
+    font-size: 1.02rem;
+    line-height: 1.85;
+    padding-bottom: 6px;
+  }
+
+  .about-block {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 48px;
+    align-items: start;
+  }
+
+  .about-text {
+    font-size: 1.05rem;
+    color: var(--ink-soft);
+    line-height: 1.95;
+  }
+
+  .about-text strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  .about-aside {
+    border-left: 2px solid var(--gold);
+    padding: 8px 0 8px 28px;
+  }
+
+  .about-aside h3 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.15rem;
+    margin-bottom: 14px;
+    letter-spacing: 0.04em;
+  }
+
+  .about-aside ul {
+    list-style: none;
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+  }
+
+  .about-aside li {
+    padding: 8px 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .about-aside li:last-child { border-bottom: none; }
+
+  /* Research */
+  .dir-list { list-style: none; }
+
+  .dir-item {
+    display: grid;
+    grid-template-columns: 4.5rem minmax(8rem, 11rem) 1fr;
+    gap: 20px 28px;
+    padding: 28px 0;
+    border-top: 1px solid var(--line);
+    transition: background 0.25s;
+  }
+
+  .dir-item:last-child { border-bottom: 1px solid var(--line); }
+
+  .dir-item:hover { background: linear-gradient(90deg, var(--gold-soft), transparent 70%); }
+
+  .dir-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--crimson);
+    line-height: 1;
+    letter-spacing: 0.04em;
+  }
+
+  .dir-name {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: var(--ink);
+  }
+
+  .dir-desc {
+    color: var(--ink-soft);
+    font-size: 0.98rem;
+    line-height: 1.8;
+  }
+
+  /* People */
+  .people {
+    display: grid;
+    grid-template-columns: 132px 1fr;
+    gap: 28px;
+    align-items: start;
+  }
+
+  .people-photo {
+    width: 132px;
+    height: 165px;
+    object-fit: cover;
+    object-position: center top;
+    filter: grayscale(12%);
+    border: 1px solid var(--line);
+  }
+
+  .people-role {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--crimson);
+    margin-bottom: 10px;
+  }
+
+  .people-name {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.85rem;
+    font-weight: 700;
+    margin-bottom: 14px;
+  }
+
+  .people-name a {
+    text-decoration: none;
+    color: var(--ink);
+  }
+
+  .people-name a:hover { color: var(--crimson); }
+
+  .people-bio {
+    color: var(--ink-soft);
+    font-size: 1rem;
+    line-height: 1.9;
+    max-width: 40em;
+  }
+
+  .people-links {
+    margin-top: 22px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    font-size: 0.92rem;
+  }
+
+  .people-links a {
+    color: var(--crimson);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+  }
+
+  .people-links a:hover { border-bottom-color: var(--crimson); }
+
+  .committee {
+    margin-top: 48px;
+    padding-top: 36px;
+    border-top: 1px solid var(--line);
+  }
+
+  .committee h3 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.25rem;
+    margin-bottom: 18px;
+    letter-spacing: 0.04em;
+  }
+
+  .committee-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px 32px;
+    list-style: none;
+  }
+
+  .committee-grid li {
+    font-size: 0.95rem;
+    color: var(--ink-soft);
+    line-height: 1.65;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .committee-grid strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  .committee-note {
+    margin-top: 16px;
+    font-size: 0.88rem;
+    color: var(--ink-mute);
+  }
+
+  /* News */
+  .news-list { list-style: none; }
+
+  .news-item {
+    display: grid;
+    grid-template-columns: 7.5rem 1fr;
+    gap: 24px;
+    padding: 20px 0;
+    border-top: 1px solid var(--line);
+    font-size: 1rem;
+  }
+
+  .news-item:last-child { border-bottom: 1px solid var(--line); }
+
+  .news-date {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.82rem;
+    color: var(--ink-mute);
+    letter-spacing: 0.04em;
+  }
+
+  .news-item a { color: var(--crimson); text-decoration: none; }
+  .news-item a:hover { text-decoration: underline; }
+  .news-item a.news-link { color: var(--ink); }
+  .news-item a.news-link:hover { color: var(--crimson); text-decoration: none; }
+  .news-more {
+    display: inline-block;
+    margin-top: 22px;
+    color: var(--crimson);
+    text-decoration: none;
+    font-size: 0.95rem;
+  }
+  .news-more:hover { text-decoration: underline; }
+
+  /* Join band */
+  .join-band {
+    background:
+      linear-gradient(135deg, #ae0b2a 0%, #8a0821 55%, #6e0619 100%);
+    color: #fff;
+    padding: 88px 0;
+  }
+
+  .join-band .sec-eyebrow { color: var(--gold); }
+
+  .join-band .sec-title { color: #fff; margin-bottom: 18px; }
+
+  .join-band p {
+    color: rgba(255,255,255,0.78);
+    max-width: 40em;
+    margin-bottom: 12px;
+    font-size: 1.02rem;
+    line-height: 1.85;
+  }
+
+  .join-band a.mail {
+    color: var(--gold);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(184,149,74,0.45);
+  }
+
+  .join-band a.mail:hover { border-bottom-color: var(--gold); }
+
+  .join-actions { margin-top: 28px; }
+
+  /* Footer */
+  .site-foot {
+    background: var(--ruc-red);
+    color: rgba(255,255,255,0.85);
+    padding: 36px 0 42px;
+    font-size: 0.85rem;
+  }
+
+  .foot-inner {
+    width: min(var(--max), calc(100% - 48px));
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 16px 32px;
+    align-items: end;
+  }
+
+  .foot-brand {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: #fff;
+    margin-bottom: 8px;
+  }
+
+  .site-foot a {
+    color: rgba(255,255,255,0.9);
+    text-decoration: none;
+  }
+
+  .site-foot a:hover { color: #fff; }
+
+  .person-cards {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+  }
+
+  .people-group + .people-group {
+    margin-top: 36px;
+  }
+
+  .people-group-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.15rem;
+    letter-spacing: 0.04em;
+    margin-bottom: 16px;
+    color: var(--ink);
+  }
+
+  .person-card {
+    padding: 22px 22px 20px;
+    border-top: 2px solid var(--gold);
+    background: #fff;
+    border-right: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    border-left: 1px solid var(--line);
+  }
+
+  .section-alt .person-card {
+    background: var(--paper);
+  }
+
+  .person-card-body {
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+  }
+
+  .person-card-photo {
+    width: 112px;
+    height: 140px;
+    object-fit: cover;
+    object-position: center top;
+    flex-shrink: 0;
+    background: #e8e4dc;
+  }
+
+  .person-card-photo--placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.6rem;
+    color: var(--ruc-red);
+    background: linear-gradient(160deg, #f3eee6, #e4ddd2);
+  }
+
+  .person-card-text { min-width: 0; flex: 1; }
+
+  .person-card-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 10px 14px;
+    margin-bottom: 8px;
+  }
+
+  .person-role-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--crimson);
+  }
+
+  .person-card-name {
+    font-family: 'Noto Serif SC', 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+  }
+
+  .person-card-name a {
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+  }
+
+  .person-card-name a:hover {
+    color: var(--crimson);
+    border-bottom-color: var(--crimson);
+  }
+
+  .person-card-aff {
+    font-size: 0.88rem;
+    color: var(--ink-mute);
+    margin-bottom: 10px;
+    line-height: 1.55;
+  }
+
+  .person-card-bio {
+    font-size: 0.92rem;
+    color: var(--ink-soft);
+    line-height: 1.75;
+  }
+
+  .member-table-wrap {
+    overflow-x: auto;
+    border: 1px solid var(--line);
+    background: #fff;
+  }
+
+  .section-alt .member-table-wrap { background: var(--paper); }
+
+  .member-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.92rem;
+  }
+
+  .member-table th,
+  .member-table td {
+    padding: 12px 14px;
+    text-align: left;
+    border-bottom: 1px solid var(--line);
+    vertical-align: top;
+  }
+
+  .member-table th {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    background: rgba(184,149,74,0.08);
+    font-weight: 500;
+  }
+
+  .member-table tr:last-child td { border-bottom: none; }
+
+  .member-table a {
+    color: var(--crimson);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(143,29,29,0.25);
+  }
+
+  .member-table a:hover { border-bottom-color: var(--crimson); }
+
+  @media (max-width: 900px) {
+    .person-cards { grid-template-columns: 1fr; }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .reveal.is-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (max-width: 720px) {
+    .hero-logo {
+      width: 72px;
+      height: 72px;
+    }
+    .hero-brand {
+      font-size: 1.85rem;
+    }
+    .hero-en {
+      font-size: 0.68rem;
+      letter-spacing: 0.01em;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .brand-cn, .brand-divider { display: none; }
+    .sec-head, .about-block, .people, .hero-meta-inner, .committee-grid {
+      grid-template-columns: 1fr;
+    }
+    .dir-item {
+      grid-template-columns: 3rem 1fr;
+    }
+    .dir-desc { grid-column: 1 / -1; }
+    .meta-item {
+      border-right: none;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      padding: 12px 0;
+    }
+    .meta-item:last-child { border-bottom: none; }
+    .nav a:not(.nav-en) { display: none; }
+  }
+
+  @media (max-width: 640px) {
+    .hero-content { padding: 96px 0 32px; }
+    .section, .join-band { padding: 64px 0; }
+    .people-photo { width: 120px; height: 150px; }
+  }
+</style>
+</head>
+<body>
+<header class="topbar" id="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="#top">
+      <img class="brand-logo" src="rias-logo.png" alt="RIAS"/>
+      <span class="brand-mark"><span class="ri">RI</span><span class="as">AS</span></span>
+      <span class="brand-divider" aria-hidden="true"></span>
+      <span class="brand-cn">河北省虚实融合无人系统研发重点实验室</span>
+    </a>
+    <nav class="nav" aria-label="主导航">
+      <a href="#about">简介</a>
+      <a href="#research">方向</a>
+      <a href="#people">主任</a>
+      <a href="#academic">学术委员会</a>
+      <a href="#management">管理委员会</a>
+      <a href="news/">新闻</a>
+      <a href="#join">加入</a>
+      <a class="nav-en" href="index_en.html">EN</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="hero-veil" aria-hidden="true"></div>
+  <div class="hero-content">
+    <p class="hero-kicker">Hebei Provincial Key Laboratory · 学科类</p>
+    <div class="hero-name-row">
+      <img class="hero-logo" src="rias-logo.png" alt="RIAS logo"/>
+      <div class="hero-brand-line">
+        <div class="hero-brand"><span class="ri">RI</span><span class="as">AS</span></div>
+        <p class="hero-en">Lab of Real-virtual Integrated Autonomous Systems</p>
+      </div>
+    </div>
+    <h1 class="hero-title">河北省虚实融合无人系统研发重点实验室</h1>
+    <p class="hero-lead">面向低空经济与智能无人系统，围绕虚实映射、群体智能体协同感知、多智能体协同决策与优化、虚实融合多智能体云脑平台与测试系统及跨域集群落地，贯通「基础研究—技术攻关—系统集成—场景示范」全链条。</p>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="#research">研究方向</a>
+      <a class="btn btn-ghost" href="#join">加入我们</a>
+    </div>
+  </div>
+  <div class="hero-meta">
+    <div class="hero-meta-inner">
+      <div class="meta-item">
+        <span class="meta-label">Approved</span>
+        <div class="meta-value">2026.07.20</div>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Director</span>
+        <div class="meta-value">王永才 教授</div>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Host</span>
+        <div class="meta-value">中国人民大学雄安未来智造产业研究院</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt" id="about">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <p class="sec-eyebrow">About the Laboratory</p>
+        <h2 class="sec-title">实验室简介</h2>
+      </div>
+      <p class="sec-desc">英文标识 Lab of Real-virtual Integrated Autonomous Systems（RIAS）。研究领域为信息，服务电子信息、先进制造与低空经济等产业方向。</p>
+    </div>
+    <div class="about-block reveal">
+      <p class="about-text">
+        <strong>河北省虚实融合无人系统研发重点实验室</strong>为学科类省重点实验室，依托<strong>中国人民大学雄安未来智造产业研究院</strong>建设，由<strong>王永才</strong>教授担任主任。实验室立足雄安、联动北京本部，面向新一代人工智能、未来产业与智能无人系统等国家战略需求，聚焦智能体系统、视觉空间计算、协同感知与群智决策，构建「感知—认知—决策—行动」全链条研究体系。
+        实验室汇聚中国人民大学及相关高校、科研院所力量，聘请中国科学院<strong>管晓宏</strong>院士担任学术顾问，组建高水平学术委员会，为虚实融合无人系统关键技术突破与场景落地提供平台支撑。
+      </p>
+      <aside class="about-aside">
+        <h3>建设定位</h3>
+        <ul>
+          <li>学科类河北省重点实验室</li>
+          <li>虚实融合无人系统科研攻关平台</li>
+          <li>低空经济与智能集群应用示范载体</li>
+          <li>拔尖创新人才培养与开放合作基地</li>
+        </ul>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="research">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <p class="sec-eyebrow">Research Directions</p>
+        <h2 class="sec-title">五大研究方向</h2>
+      </div>
+      <p class="sec-desc">围绕虚实融合无人系统的感知、决策、平台测试与落地需求，布局相互支撑的五条主线。</p>
+    </div>
+    <ul class="dir-list">
+      <li class="dir-item reveal">
+        <div class="dir-num">01</div>
+        <div class="dir-name">实景重建与虚实映射</div>
+        <div class="dir-desc">基于 3D 高斯泼溅开展室内外实景高清重建，融合几何、物理、语义与纹理信息，建立跨领域、跨尺度虚实融合映射，并拓展至 4D 动态场景，为群智无人系统构建高逼真虚拟训练场。</div>
+      </li>
+      <li class="dir-item reveal">
+        <div class="dir-num">02</div>
+        <div class="dir-name">群体智能体协同感知</div>
+        <div class="dir-desc">面向多机、多传感器与弱通信弱算力场景，研究分布式特征提取、轻量化模型与低开销信息交互，形成群体智能体协同检测、跟踪、定位与态势感知方法，支撑边缘端集群实时联合感知。</div>
+      </li>
+      <li class="dir-item reveal">
+        <div class="dir-num">03</div>
+        <div class="dir-name">多智能体协同决策与优化</div>
+        <div class="dir-desc">面向复杂动态与强干扰环境，研究多智能体分布式决策、任务分配、路径规划与协同优化，提升异构无人系统在不确定条件下的自适应协作与整体作业效能。</div>
+      </li>
+      <li class="dir-item reveal">
+        <div class="dir-num">04</div>
+        <div class="dir-name">虚实融合的多智能体云脑平台与测试系统</div>
+        <div class="dir-desc">面向多智能体协同作业与系统验证需求，构建虚实融合的云脑平台与测试系统，贯通感知汇聚、协同研判、决策调度与闭环评测，支撑算法验证、系统联调与场景推演。</div>
+      </li>
+      <li class="dir-item reveal">
+        <div class="dir-num">05</div>
+        <div class="dir-name">跨域智能集群落地转化</div>
+        <div class="dir-desc">面向地空、海空、陆海空协同，开展公共安防、厂区巡检、应急搜救、工业物流等场景示范，打通「算法—仿真—样机—示范—产业化」全链路。</div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- PEOPLE START -->
+<section class="section section-alt" id="people">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <p class="sec-eyebrow">Leadership</p>
+        <h2 class="sec-title">实验室主任</h2>
+      </div>
+      <p class="sec-desc">主持实验室建设与运行，推进虚实融合无人系统领域研究与人才培养。</p>
+    </div>
+    <div class="people reveal">
+  <img class="people-photo" src="people/wang-yongcai.jpg" alt="王永才教授" width="132" height="165"/>
+  <div>
+    <p class="people-role">Lab Director</p>
+    <h3 class="people-name"><a href="https://yongcaiwang.github.io/">王永才</a></h3>
+    <p class="people-bio">中国人民大学计算机系教授、博士生导师、副系主任，信息学院科研与学科建设工委主任，中国人民大学雄安未来智造产业研究院核心骨干。长期从事多智能体协同感知、视觉 SLAM、Spatial AI 与无人系统目标检测研究，发表论文 120 余篇（CCF A/B 类 70 余篇），获交通运输部航海学会技术发明一等奖等奖励。</p>
+    <div class="people-links">
+      <a href="https://yongcaiwang.github.io/">主任主页</a>
+      <a href="https://yongcaiwang.github.io/students.html">指导学生</a>
+      <a href="mailto:ycw@ruc.edu.cn">ycw@ruc.edu.cn</a>
+    </div>
+  </div>
+</div>
+  </div>
+</section>
+
+<section class="section" id="academic">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <p class="sec-eyebrow">Academic Committee</p>
+        <h2 class="sec-title">学术委员会</h2>
+      </div>
+      <p class="sec-desc">聘请中国科学院院士担任学术顾问，由智能无人系统领域权威专家组成。</p>
+    </div>
+    <div class="people-group reveal">
+      <h3 class="people-group-title">学术顾问</h3>
+      <div class="person-cards">
+<article class="person-card">
+  <div class="person-card-body">
+    <img class="person-card-photo" src="people/guan-xiaohong.jpg" alt="管晓宏" width="112" height="140" loading="lazy"/>
+    <div class="person-card-text">
+      <div class="person-card-head"><h3 class="person-card-name"><a href="https://www.au.tsinghua.edu.cn/info/1018/3083.htm" target="_blank" rel="noopener noreferrer">管晓宏</a></h3></div>
+      <p class="person-card-aff">中国科学院院士 / 西安交通大学、清华大学</p>
+      <p class="person-card-bio">系统工程学家，IEEE Fellow，西安交通大学电子与信息学部主任、智能网络与网络安全教育部重点实验室首席科学家。长期从事系统工程理论与应用研究，曾任清华大学自动化系主任。</p>
+    </div>
+  </div>
+</article>
+      </div>
+    </div>
+    <div class="people-group reveal">
+      <h3 class="people-group-title">主任与委员</h3>
+      <div class="person-cards">
+<article class="person-card">
+  <div class="person-card-body">
+    <img class="person-card-photo" src="people/zhao-qianchuan.jpg" alt="赵千川" width="112" height="140" loading="lazy"/>
+    <div class="person-card-text">
+      <div class="person-card-head"><span class="person-role-tag">主任</span><h3 class="person-card-name"><a href="https://www.au.tsinghua.edu.cn/info/1173/2085.htm" target="_blank" rel="noopener noreferrer">赵千川</a></h3></div>
+      <p class="person-card-aff">清华大学自动化系教授，国家杰青</p>
+      <p class="person-card-bio">智能与网络化系统研究中心主任。研究方向为网络化动态系统性能优化与安全控制。获国家自然科学二等奖等多项奖励。</p>
+    </div>
+  </div>
+</article>
+<article class="person-card reveal">
+  <div class="person-card-body">
+    <img class="person-card-photo" src="people/jia-qingshan.jpg" alt="贾庆山" width="112" height="140" loading="lazy"/>
+    <div class="person-card-text">
+      <div class="person-card-head"><span class="person-role-tag">委员</span><h3 class="person-card-name"><a href="https://www.au.tsinghua.edu.cn/info/1111/1525.htm" target="_blank" rel="noopener noreferrer">贾庆山</a></h3></div>
+      <p class="person-card-aff">清华大学自动化系教授，国家杰青</p>
+      <p class="person-card-bio">清华大学全球创新学院教学副院长。研究方向为网络化信息物理能源系统优化理论与方法，获国家自然科学二等奖、教育部自然科学二等奖。</p>
+    </div>
+  </div>
+</article>
+<article class="person-card reveal">
+  <div class="person-card-body">
+    <img class="person-card-photo" src="people/xie-guangming.jpg" alt="谢广明" width="112" height="140" loading="lazy"/>
+    <div class="person-card-text">
+      <div class="person-card-head"><span class="person-role-tag">委员</span><h3 class="person-card-name"><a href="https://www.ai.pku.edu.cn/info/1171/1702.htm" target="_blank" rel="noopener noreferrer">谢广明</a></h3></div>
+      <p class="person-card-aff">北京大学先进制造与机器人学院教授</p>
+      <p class="person-card-bio">主要研究智能仿生机器人与仿生集群协作。获国家自然科学二等奖、教育部自然科学一等奖，主持多项国家自然科学基金项目。</p>
+    </div>
+  </div>
+</article>
+<article class="person-card reveal">
+  <div class="person-card-body">
+    <img class="person-card-photo" src="people/li-mo.jpg" alt="李默" width="112" height="140" loading="lazy"/>
+    <div class="person-card-text">
+      <div class="person-card-head"><span class="person-role-tag">委员</span><h3 class="person-card-name"><a href="https://cse.hkust.edu.hk/~lim/" target="_blank" rel="noopener noreferrer">李默</a></h3></div>
+      <p class="person-card-aff">香港科技大学教授，IEEE Fellow</p>
+      <p class="person-card-bio">香港科大低空经济研究中心主任。研究方向为无线感知与网络系统、智慧城市物联网及低空经济。ACM SIGMOBILE 主席，《ACM物联网汇刊》主编。</p>
+    </div>
+  </div>
+</article>
+<article class="person-card reveal">
+  <div class="person-card-body">
+    <img class="person-card-photo" src="people/chai-yunpeng.jpg" alt="柴云鹏" width="112" height="140" loading="lazy"/>
+    <div class="person-card-text">
+      <div class="person-card-head"><span class="person-role-tag">委员</span><h3 class="person-card-name"><a href="http://cloudlab.ruc.edu.cn" target="_blank" rel="noopener noreferrer">柴云鹏</a></h3></div>
+      <p class="person-card-aff">中国人民大学教授，信息学院院长</p>
+      <p class="person-card-bio">主要研究方向为智能计算系统、数据库系统、存储系统与云计算。获深圳市科技进步一等奖、CCF科技进步二等奖等。</p>
+    </div>
+  </div>
+</article>
+<article class="person-card reveal">
+  <div class="person-card-body">
+    <img class="person-card-photo" src="people/yan-chaobo.jpg" alt="鄢超波" width="112" height="140" loading="lazy"/>
+    <div class="person-card-text">
+      <div class="person-card-head"><span class="person-role-tag">委员</span><h3 class="person-card-name"><a href="https://www.xjtu.edu.cn/jsnr.jsp?urltype=tree.TreeTempUrl&wbtreeid=1632&wbwbxjtuteacherid=1970" target="_blank" rel="noopener noreferrer">鄢超波</a></h3></div>
+      <p class="person-card-aff">西安交通大学教授，自动化学院副院长</p>
+      <p class="person-card-bio">精密微纳制造技术全国重点实验室固定成员。研究方向为信息物理融合系统建模、智能制造与智能物流系统优化调度。</p>
+    </div>
+  </div>
+</article>
+<article class="person-card reveal">
+  <div class="person-card-body">
+    <img class="person-card-photo" src="people/shen-zhen.jpg" alt="沈震" width="112" height="140" loading="lazy"/>
+    <div class="person-card-text">
+      <div class="person-card-head"><span class="person-role-tag">委员</span><h3 class="person-card-name"><a href="https://people.ucas.ac.cn/~zhenshen" target="_blank" rel="noopener noreferrer">沈震</a></h3></div>
+      <p class="person-card-aff">中国科学院自动化研究所研究员</p>
+      <p class="person-card-bio">研究方向为智能控制与复杂系统。发表论文100余篇，授权发明专利多项，获中国自动化学会技术发明奖二等奖等。</p>
+    </div>
+  </div>
+</article>
+<article class="person-card reveal">
+  <div class="person-card-body">
+    <img class="person-card-photo" src="people/bai-yang.jpg" alt="白阳" width="112" height="140" loading="lazy"/>
+    <div class="person-card-text">
+      <div class="person-card-head"><span class="person-role-tag">委员</span><h3 class="person-card-name">白阳</h3></div>
+      <p class="person-card-aff">中国电科智能院正高级工程师</p>
+      <p class="person-card-bio">集团高级专家。长期从事智能无人系统与大规模无人机集群控制研究，获国防科技进步一等奖、电科集团科技进步特等奖等。</p>
+    </div>
+  </div>
+</article>
+<article class="person-card reveal">
+  <div class="person-card-body">
+    <img class="person-card-photo" src="people/wang-yongcai.jpg" alt="王永才" width="112" height="140" loading="lazy"/>
+    <div class="person-card-text">
+      <div class="person-card-head"><span class="person-role-tag">委员</span><h3 class="person-card-name"><a href="https://yongcaiwang.github.io/" target="_blank" rel="noopener noreferrer">王永才</a></h3></div>
+      <p class="person-card-aff">中国人民大学教授，计算机系副系主任</p>
+      <p class="person-card-bio">实验室主任。研究方向为智能体系统、Spatial AI、协同感知与多智能体强化学习。发表论文120余篇，获航海学会技术发明一等奖等。</p>
+    </div>
+  </div>
+</article>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section" id="management">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <p class="sec-eyebrow">Management Committee</p>
+        <h2 class="sec-title">管理委员会</h2>
+      </div>
+      <p class="sec-desc">负责实验室运行管理、条件保障与产学研协同。</p>
+    </div>
+    <div class="person-cards reveal">
+<article class="person-card">
+  <div class="person-card-head"><span class="person-role-tag">主任</span><h3 class="person-card-name">沈健</h3></div>
+  <p class="person-card-aff">研究员，中国人民大学雄安未来智造产业研究院副院长</p>
+</article>
+<article class="person-card">
+  <div class="person-card-head"><span class="person-role-tag">委员</span><h3 class="person-card-name"><a href="http://cloudlab.ruc.edu.cn" target="_blank" rel="noopener noreferrer">柴云鹏</a></h3></div>
+  <p class="person-card-aff">教授，中国人民大学信息学院院长</p>
+</article>
+<article class="person-card">
+  <div class="person-card-head"><span class="person-role-tag">委员</span><h3 class="person-card-name"><a href="http://info.ruc.edu.cn/jsky/szdw/ajxjgcx/jsjkxyjsx1/js2/43edc05040f54656aed4869bb7969de0.htm" target="_blank" rel="noopener noreferrer">卢卫</a></h3></div>
+  <p class="person-card-aff">教授，中国人民大学信息学院副院长</p>
+</article>
+<article class="person-card">
+  <div class="person-card-head"><span class="person-role-tag">委员</span><h3 class="person-card-name"><a href="http://info.ruc.edu.cn/jsky/szdw/ajxjgcx/jjxxglx1/js_5/2d290100ef644d59838c602d85769ae8.htm" target="_blank" rel="noopener noreferrer">许伟</a></h3></div>
+  <p class="person-card-aff">教授，中国人民大学信息学院副院长</p>
+</article>
+<article class="person-card">
+  <div class="person-card-head"><span class="person-role-tag">委员</span><h3 class="person-card-name">邴丕敬</h3></div>
+  <p class="person-card-aff">中国人民大学雄安未来智造产业研究院综合办公室主任</p>
+</article>
+<article class="person-card">
+  <div class="person-card-head"><span class="person-role-tag">委员</span><h3 class="person-card-name">任柏松</h3></div>
+  <p class="person-card-aff">正高级工程师，雄安国创中心所长</p>
+</article>
+<article class="person-card">
+  <div class="person-card-head"><span class="person-role-tag">委员</span><h3 class="person-card-name">李妍</h3></div>
+  <p class="person-card-aff">雄安国创中心技术经理</p>
+</article>
+    </div>
+  </div>
+</section>
+<!-- PEOPLE END -->
+
+<section class="section" id="news">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <p class="sec-eyebrow">News</p>
+        <h2 class="sec-title">新闻动态</h2>
+      </div>
+      <p class="sec-desc">实验室建设进展与代表性学术动态。</p>
+    </div>
+    <ul class="news-list reveal">
+      <li class="news-item"><span class="news-date">2026.07.27</span><a class="news-link" href="news/2026-07-27-visit.html">学术委员会委员李默、沈震来访商讨实验室建设事宜</a></li>
+      <li class="news-item"><span class="news-date">2026.07.20</span><a class="news-link" href="news/2026-07-20-approved.html">河北省虚实融合无人系统研发重点实验室（RIAS）获批建立，王永才教授任实验室主任</a></li>
+      <li class="news-item"><span class="news-date">2026.06.30</span><a class="news-link" href="news/2026-06-30-eccv.html">ECCV 2026 +1，Congratulations to Kang Yang</a></li>
+      <li class="news-item"><span class="news-date">2026.05.01</span><a class="news-link" href="news/2026-05-01-icml.html">ICML 2026 +1，Congratulations to Guoxin Lian</a></li>
+      <li class="news-item"><span class="news-date">2026.02.21</span><a class="news-link" href="news/2026-02-21-cvpr.html">CVPR 2026 +2，Congratulations to Peng Wang and Shuo Wang</a></li>
+    </ul>
+    <a class="news-more reveal" href="news/">查看全部新闻 →</a>
+  </div>
+</section>
+
+<section class="join-band" id="join">
+  <div class="wrap reveal">
+    <p class="sec-eyebrow">Join Us / Contact</p>
+    <h2 class="sec-title">加入我们</h2>
+    <p>欢迎对虚实融合重建、群体协同感知、多智能体决策优化、云脑平台与测试系统及跨域无人系统感兴趣的科研早培本科生、学硕、专硕、直博、普博与工程博士加入。</p>
+    <p>期望具备扎实学习与编程能力、良好英文读写与自驱力；有论文或重要竞赛经历者优先。</p>
+    <p>联系邮箱：<a class="mail" href="mailto:ycw@ruc.edu.cn">ycw@ruc.edu.cn</a></p>
+    <p>通讯地址：中国（河北）自由贸易试验区雄安片区雄安高新区服务中心 620 室</p>
+    <div class="join-actions">
+      <a class="btn btn-primary" href="mailto:ycw@ruc.edu.cn">发送邮件</a>
+      <a class="btn btn-ghost" href="https://yongcaiwang.github.io/">主任主页</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-foot">
+  <div class="foot-inner">
+    <div>
+      <div class="foot-brand"><span class="ri">RI</span><span class="as">AS</span></div>
+      <div>河北省虚实融合无人系统研发重点实验室</div>
+      <div>依托单位：中国人民大学雄安未来智造产业研究院</div>
+      <div>Hebei Provincial Key Laboratory of Real-virtual Integrated Autonomous Systems</div>
+    </div>
+    <div>
+      <a href="https://yongcaiwang.github.io/">王永才教授主页</a> ·
+      <a href="index_en.html">English</a> ·
+      <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener">京ICP备2024071883号</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add('is-in'); });
+  }, { threshold: 0.14, rootMargin: '0px 0px -6% 0px' });
+  document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+</script>
+</body>
+</html>

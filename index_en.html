@@ -1,0 +1,1245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>RIAS — Hebei Provincial Key Laboratory of Real-virtual Integrated Autonomous Systems</title>
+<meta name="description" content="Hebei Provincial Key Laboratory of Real-virtual Integrated Autonomous Systems (RIAS). Hosted by RUC Xiong'an Institute for Future Intelligent Manufacturing. Director: Prof. Yongcai Wang."/>
+<meta name="keywords" content="RIAS,Real-virtual Integrated Autonomous Systems,Spatial AI,collaborative perception,swarm intelligence,low-altitude economy,Yongcai Wang"/>
+<meta name="author" content="RIAS Lab"/>
+<meta name="theme-color" content="#ae0b2a"/>
+<link rel="canonical" href="https://lab-rias.github.io/index_en.html"/>
+<link rel="alternate" hreflang="zh-CN" href="https://lab-rias.github.io/"/>
+<link rel="alternate" hreflang="en" href="https://lab-rias.github.io/index_en.html"/>
+<meta property="og:type" content="website"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:title" content="RIAS — Real-virtual Integrated Autonomous Systems"/>
+<meta property="og:description" content="Provincial key laboratory for perception, localization, collaboration, and decision-making in real-virtual integrated autonomous systems."/>
+<meta property="og:url" content="https://lab-rias.github.io/index_en.html"/>
+<meta property="og:image" content="https://lab-rias.github.io/rias-hero-bg.png"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&amp;family=Noto+Serif+SC:wght@400;600;700&amp;family=Noto+Sans+SC:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --ink: #14171f;
+    --ink-soft: #3a3f4d;
+    --ink-mute: #6b7280;
+    --paper: #f6f7f9;
+    --line: #d5d9e2;
+    --crimson: #ae0b2a;
+    --crimson-deep: #8a0821;
+    --ruc-red: #ae0b2a;
+    --gold: #b8954a;
+    --gold-soft: rgba(184,149,74,0.18);
+    --hero-ink: #ae0b2a;
+    --max: 1120px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 16px;
+    color: var(--ink);
+    background: var(--paper);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: inherit; }
+
+  .topbar {
+    position: fixed;
+    inset: 0 0 auto 0;
+    z-index: 100;
+    height: 72px;
+    display: flex;
+    align-items: center;
+    background: var(--ruc-red);
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+  }
+
+  .topbar-inner {
+    width: min(var(--max), calc(100% - 48px));
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    text-decoration: none;
+    color: #fff;
+  }
+
+  .brand-logo {
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+    background: #fff;
+    box-shadow: 0 0 0 1px rgba(255,255,255,0.25);
+  }
+
+  .brand-mark {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 1.85rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    line-height: 1;
+  }
+
+  .brand-mark .ri,
+  .hero-brand .ri,
+  .foot-brand .ri { color: var(--gold); }
+
+  /* Lighter red on crimson bars so AS stays readable */
+  .brand-mark .as,
+  .hero-brand .as,
+  .foot-brand .as { color: #ffc9ce; }
+
+  .brand-divider {
+    width: 1px;
+    height: 28px;
+    background: rgba(255,255,255,0.22);
+  }
+
+  .brand-cn {
+    font-family: 'Cormorant Garamond', 'Noto Serif SC', serif;
+    font-size: 0.92rem;
+    line-height: 1.3;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    max-width: 16em;
+  }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .nav a {
+    text-decoration: none;
+    color: rgba(255,255,255,0.78);
+    font-size: 0.88rem;
+    padding: 8px 12px;
+    transition: color 0.2s;
+  }
+
+  .nav a:hover { color: #fff; }
+
+  .nav .nav-en {
+    margin-left: 8px;
+    border: 1px solid rgba(255,255,255,0.28);
+    padding: 6px 12px;
+    color: #fff;
+  }
+
+  .nav .nav-en:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+  }
+
+  .hero {
+    position: relative;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    color: #fff;
+    overflow: hidden;
+    background: var(--hero-ink);
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg, rgba(174,11,42,0.72) 0%, rgba(174,11,42,0.82) 45%, rgba(138,8,33,0.94) 100%),
+      url('rias-hero-bg.png') center / cover no-repeat;
+    transform: scale(1.04);
+    animation: hero-drift 28s ease-in-out infinite alternate;
+  }
+
+  @keyframes hero-drift {
+    from { transform: scale(1.04) translate3d(0, 0, 0); }
+    to { transform: scale(1.08) translate3d(-1.2%, -0.8%, 0); }
+  }
+
+  .hero-veil {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 70% 55% at 75% 30%, rgba(255,210,140,0.16), transparent 55%),
+      linear-gradient(90deg, rgba(120,6,28,0.45) 0%, transparent 58%);
+    pointer-events: none;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    width: min(var(--max), calc(100% - 48px));
+    margin: 0 auto;
+    padding: 108px 0 40px;
+  }
+
+  .hero-kicker {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+    opacity: 0;
+    animation: rise 0.9s 0.15s ease forwards;
+  }
+
+  .hero-name-row {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 0.55em 0.85em;
+    max-width: 100%;
+    margin-bottom: 14px;
+    opacity: 0;
+    animation: rise 0.95s 0.28s ease forwards;
+  }
+
+  .hero-brand-line {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: baseline;
+    gap: 0.55em;
+    min-width: 0;
+  }
+
+  .hero-brand {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: clamp(2.4rem, 5.5vw, 4.4rem);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    line-height: 0.95;
+    margin: 0;
+    flex-shrink: 0;
+  }
+
+  .hero-logo {
+    width: clamp(88px, 12vw, 132px);
+    height: clamp(88px, 12vw, 132px);
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+    background: #fff;
+    box-shadow: 0 8px 28px rgba(0,0,0,0.22);
+  }
+
+  .hero-en {
+    font-family: 'Cormorant Garamond', 'Noto Serif SC', serif;
+    font-size: clamp(0.78rem, 1.45vw, 1.28rem);
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    line-height: 1.2;
+    color: rgba(255,255,255,0.92);
+    margin: 0;
+    white-space: nowrap;
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', 'Noto Serif SC', serif;
+    font-size: clamp(1.25rem, 2.4vw, 1.75rem);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    line-height: 1.4;
+    max-width: 48em;
+    margin-bottom: 14px;
+    opacity: 0;
+    animation: rise 0.95s 0.4s ease forwards;
+  }
+
+  .hero-lead {
+    font-size: 1.02rem;
+    font-weight: 300;
+    color: rgba(255,255,255,0.78);
+    max-width: 52em;
+    line-height: 1.85;
+    margin-bottom: 24px;
+    opacity: 0;
+    animation: rise 0.95s 0.52s ease forwards;
+  }
+
+  .hero-cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    opacity: 0;
+    animation: rise 0.95s 0.64s ease forwards;
+  }
+
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(22px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 46px;
+    padding: 0 22px;
+    text-decoration: none;
+    font-size: 0.92rem;
+    letter-spacing: 0.04em;
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+  }
+
+  .btn-primary {
+    background: #fff;
+    color: var(--ruc-red);
+    border: 1px solid #fff;
+  }
+
+  .btn-primary:hover {
+    background: rgba(255,255,255,0.9);
+    color: var(--crimson-deep);
+  }
+
+  .btn-ghost {
+    background: transparent;
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.55);
+  }
+
+  .btn-ghost:hover {
+    border-color: #fff;
+    background: rgba(255,255,255,0.12);
+    color: #fff;
+  }
+
+  .hero-meta {
+    position: relative;
+    z-index: 2;
+    border-top: 1px solid rgba(255,255,255,0.18);
+    background: rgba(120,6,28,0.55);
+    backdrop-filter: blur(8px);
+  }
+
+  .hero-meta-inner {
+    width: min(var(--max), calc(100% - 48px));
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    padding: 22px 0;
+  }
+
+  .meta-item {
+    padding: 4px 16px 4px 0;
+    border-right: 1px solid rgba(255,255,255,0.12);
+  }
+
+  .meta-item:last-child { border-right: none; }
+
+  .meta-label {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+
+  .meta-value {
+    font-family: 'Cormorant Garamond', 'Noto Serif SC', serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+
+  .section { padding: 88px 0; }
+  .section-alt { background: #fff; }
+
+  .wrap {
+    width: min(var(--max), calc(100% - 48px));
+    margin: 0 auto;
+  }
+
+  .sec-head {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr);
+    gap: 32px 64px;
+    margin-bottom: 48px;
+    align-items: end;
+  }
+
+  .sec-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+
+  .sec-title {
+    font-family: 'Cormorant Garamond', 'Noto Serif SC', serif;
+    font-size: clamp(2rem, 3.5vw, 2.6rem);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    line-height: 1.2;
+  }
+
+  .sec-desc {
+    color: var(--ink-soft);
+    font-size: 1.02rem;
+    line-height: 1.85;
+    padding-bottom: 6px;
+  }
+
+  .about-block {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 48px;
+    align-items: start;
+  }
+
+  .about-text {
+    font-size: 1.05rem;
+    color: var(--ink-soft);
+    line-height: 1.95;
+  }
+
+  .about-text strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  .about-aside {
+    border-left: 2px solid var(--gold);
+    padding: 8px 0 8px 28px;
+  }
+
+  .about-aside h3 {
+    font-family: 'Cormorant Garamond', 'Noto Serif SC', serif;
+    font-size: 1.25rem;
+    margin-bottom: 14px;
+  }
+
+  .about-aside ul {
+    list-style: none;
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+  }
+
+  .about-aside li {
+    padding: 8px 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .about-aside li:last-child { border-bottom: none; }
+
+  .dir-list { list-style: none; }
+
+  .dir-item {
+    display: grid;
+    grid-template-columns: 4.5rem minmax(9rem, 12.5rem) 1fr;
+    gap: 20px 28px;
+    padding: 28px 0;
+    border-top: 1px solid var(--line);
+    transition: background 0.25s;
+  }
+
+  .dir-item:last-child { border-bottom: 1px solid var(--line); }
+  .dir-item:hover { background: linear-gradient(90deg, var(--gold-soft), transparent 70%); }
+
+  .dir-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--crimson);
+    line-height: 1;
+  }
+
+  .dir-name {
+    font-family: 'Cormorant Garamond', 'Noto Serif SC', serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  .dir-desc {
+    color: var(--ink-soft);
+    font-size: 0.98rem;
+    line-height: 1.8;
+  }
+
+  .people {
+    display: grid;
+    grid-template-columns: 132px 1fr;
+    gap: 28px;
+    align-items: start;
+  }
+
+  .people-photo {
+    width: 132px;
+    height: 165px;
+    object-fit: cover;
+    object-position: center top;
+    filter: grayscale(12%);
+    border: 1px solid var(--line);
+  }
+
+  .people-role {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--crimson);
+    margin-bottom: 10px;
+  }
+
+  .people-name {
+    font-family: 'Cormorant Garamond', 'Noto Serif SC', serif;
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 14px;
+  }
+
+  .people-name a {
+    text-decoration: none;
+    color: var(--ink);
+  }
+
+  .people-name a:hover { color: var(--crimson); }
+
+  .people-bio {
+    color: var(--ink-soft);
+    font-size: 1rem;
+    line-height: 1.9;
+    max-width: 42em;
+  }
+
+  .people-links {
+    margin-top: 22px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    font-size: 0.92rem;
+  }
+
+  .people-links a {
+    color: var(--crimson);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+  }
+
+  .people-links a:hover { border-bottom-color: var(--crimson); }
+
+  .committee {
+    margin-top: 48px;
+    padding-top: 36px;
+    border-top: 1px solid var(--line);
+  }
+
+  .committee h3 {
+    font-family: 'Cormorant Garamond', 'Noto Serif SC', serif;
+    font-size: 1.35rem;
+    margin-bottom: 18px;
+  }
+
+  .committee-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px 32px;
+    list-style: none;
+  }
+
+  .committee-grid li {
+    font-size: 0.95rem;
+    color: var(--ink-soft);
+    line-height: 1.65;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .committee-grid strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  .committee-note {
+    margin-top: 16px;
+    font-size: 0.88rem;
+    color: var(--ink-mute);
+  }
+
+  .news-list { list-style: none; }
+
+  .news-item {
+    display: grid;
+    grid-template-columns: 7.5rem 1fr;
+    gap: 24px;
+    padding: 20px 0;
+    border-top: 1px solid var(--line);
+    font-size: 1rem;
+  }
+
+  .news-item:last-child { border-bottom: 1px solid var(--line); }
+
+  .news-date {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.82rem;
+    color: var(--ink-mute);
+  }
+
+  .news-item a { color: var(--crimson); text-decoration: none; }
+  .news-item a:hover { text-decoration: underline; }
+  .news-item a.news-link { color: var(--ink); }
+  .news-item a.news-link:hover { color: var(--crimson); text-decoration: none; }
+  .news-more {
+    display: inline-block;
+    margin-top: 22px;
+    color: var(--crimson);
+    text-decoration: none;
+    font-size: 0.95rem;
+  }
+  .news-more:hover { text-decoration: underline; }
+
+  .join-band {
+    background: linear-gradient(135deg, #ae0b2a 0%, #8a0821 55%, #6e0619 100%);
+    color: #fff;
+    padding: 88px 0;
+  }
+
+  .join-band .sec-eyebrow { color: var(--gold); }
+  .join-band .sec-title { color: #fff; margin-bottom: 18px; }
+
+  .join-band p {
+    color: rgba(255,255,255,0.78);
+    max-width: 42em;
+    margin-bottom: 12px;
+    font-size: 1.02rem;
+    line-height: 1.85;
+  }
+
+  .join-band a.mail {
+    color: var(--gold);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(184,149,74,0.45);
+  }
+
+  .join-band a.mail:hover { border-bottom-color: var(--gold); }
+  .join-actions { margin-top: 28px; }
+
+  .site-foot {
+    background: var(--ruc-red);
+    color: rgba(255,255,255,0.85);
+    padding: 36px 0 42px;
+    font-size: 0.85rem;
+  }
+
+  .foot-inner {
+    width: min(var(--max), calc(100% - 48px));
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 16px 32px;
+    align-items: end;
+  }
+
+  .foot-brand {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: #fff;
+    margin-bottom: 8px;
+  }
+
+  .site-foot a {
+    color: rgba(255,255,255,0.9);
+    text-decoration: none;
+  }
+
+  .site-foot a:hover { color: #fff; }
+
+  .person-cards {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+  }
+
+  .people-group + .people-group {
+    margin-top: 36px;
+  }
+
+  .people-group-title {
+    font-family: 'Noto Serif SC', Georgia, 'Times New Roman', serif;
+    font-size: 1.15rem;
+    letter-spacing: 0.04em;
+    margin-bottom: 16px;
+    color: var(--ink);
+  }
+
+  .person-card {
+    padding: 22px 22px 20px;
+    border-top: 2px solid var(--gold);
+    background: #fff;
+    border-right: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    border-left: 1px solid var(--line);
+  }
+
+  .section-alt .person-card {
+    background: var(--paper);
+  }
+
+  .person-card-body {
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+  }
+
+  .person-card-photo {
+    width: 112px;
+    height: 140px;
+    object-fit: cover;
+    object-position: center top;
+    flex-shrink: 0;
+    background: #e8e4dc;
+  }
+
+  .person-card-photo--placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    color: var(--ruc-red);
+    background: linear-gradient(160deg, #f3eee6, #e4ddd2);
+  }
+
+  .person-card-text { min-width: 0; flex: 1; }
+
+  .person-card-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 10px 14px;
+    margin-bottom: 8px;
+  }
+
+  .person-role-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--crimson);
+  }
+
+  .person-card-name {
+    font-family: 'Noto Serif SC', 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+  }
+
+  .person-card-name a {
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+  }
+
+  .person-card-name a:hover {
+    color: var(--crimson);
+    border-bottom-color: var(--crimson);
+  }
+
+  .person-card-aff {
+    font-size: 0.88rem;
+    color: var(--ink-mute);
+    margin-bottom: 10px;
+    line-height: 1.55;
+  }
+
+  .person-card-bio {
+    font-size: 0.92rem;
+    color: var(--ink-soft);
+    line-height: 1.75;
+  }
+
+  .member-table-wrap {
+    overflow-x: auto;
+    border: 1px solid var(--line);
+    background: #fff;
+  }
+
+  .section-alt .member-table-wrap { background: var(--paper); }
+
+  .member-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.92rem;
+  }
+
+  .member-table th,
+  .member-table td {
+    padding: 12px 14px;
+    text-align: left;
+    border-bottom: 1px solid var(--line);
+    vertical-align: top;
+  }
+
+  .member-table th {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    background: rgba(184,149,74,0.08);
+    font-weight: 500;
+  }
+
+  .member-table tr:last-child td { border-bottom: none; }
+
+  .member-table a {
+    color: var(--crimson);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(143,29,29,0.25);
+  }
+
+  .member-table a:hover { border-bottom-color: var(--crimson); }
+
+  @media (max-width: 900px) {
+    .person-cards { grid-template-columns: 1fr; }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .reveal.is-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (max-width: 720px) {
+    .hero-logo {
+      width: 72px;
+      height: 72px;
+    }
+    .hero-brand {
+      font-size: 1.85rem;
+    }
+    .hero-en {
+      font-size: 0.68rem;
+      letter-spacing: 0.01em;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .brand-cn, .brand-divider { display: none; }
+    .sec-head, .about-block, .people, .hero-meta-inner, .committee-grid { grid-template-columns: 1fr; }
+    .dir-item { grid-template-columns: 3rem 1fr; }
+    .dir-desc { grid-column: 1 / -1; }
+    .meta-item {
+      border-right: none;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      padding: 12px 0;
+    }
+    .meta-item:last-child { border-bottom: none; }
+    .nav a:not(.nav-en) { display: none; }
+  }
+
+  @media (max-width: 640px) {
+    .hero-content { padding: 96px 0 32px; }
+    .section, .join-band { padding: 64px 0; }
+    .people-photo { width: 120px; height: 150px; }
+  }
+</style>
+</head>
+<body>
+<header class="topbar" id="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="#top">
+      <img class="brand-logo" src="rias-logo.png" alt="RIAS"/>
+      <span class="brand-mark"><span class="ri">RI</span><span class="as">AS</span></span>
+      <span class="brand-divider" aria-hidden="true"></span>
+      <span class="brand-cn">Lab of Real-virtual Integrated Autonomous Systems</span>
+    </a>
+    <nav class="nav" aria-label="Primary">
+      <a href="#about">About</a>
+      <a href="#research">Research</a>
+      <a href="#people">Director</a>
+      <a href="#academic">Committee</a>
+      <a href="#management">Mgmt</a>
+      <a href="news/index_en.html">News</a>
+      <a href="#join">Join</a>
+      <a class="nav-en" href="index.html">中文</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="hero-veil" aria-hidden="true"></div>
+  <div class="hero-content">
+    <p class="hero-kicker">Hebei Provincial Key Laboratory · Discipline Category</p>
+    <div class="hero-name-row">
+      <img class="hero-logo" src="rias-logo.png" alt="RIAS logo"/>
+      <div class="hero-brand-line">
+        <div class="hero-brand"><span class="ri">RI</span><span class="as">AS</span></div>
+        <p class="hero-en">Lab of Real-virtual Integrated Autonomous Systems</p>
+      </div>
+    </div>
+    <h1 class="hero-title">Hebei Provincial Key Laboratory of Real-virtual Integrated Autonomous Systems</h1>
+    <p class="hero-lead">Serving the low-altitude economy and intelligent unmanned systems through real-virtual mapping, swarm collaborative perception, multi-agent decision and optimization, real-virtual multi-agent cloud-brain platforms and testbeds, and cross-domain deployment—from fundamentals to field demonstration.</p>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="#research">Research</a>
+      <a class="btn btn-ghost" href="#join">Join Us</a>
+    </div>
+  </div>
+  <div class="hero-meta">
+    <div class="hero-meta-inner">
+      <div class="meta-item">
+        <span class="meta-label">Approved</span>
+        <div class="meta-value">2026.07.20</div>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Director</span>
+        <div class="meta-value">Prof. Yongcai Wang</div>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Host</span>
+        <div class="meta-value">RUC Xiong'an Institute for Future Intelligent Manufacturing</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt" id="about">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <p class="sec-eyebrow">About the Laboratory</p>
+        <h2 class="sec-title">About</h2>
+      </div>
+      <p class="sec-desc">A discipline-category provincial key laboratory in Information, serving electronic information, advanced manufacturing, and the low-altitude economy.</p>
+    </div>
+    <div class="about-block reveal">
+      <p class="about-text">
+        The <strong>Hebei Provincial Key Laboratory of Real-virtual Integrated Autonomous Systems</strong> (<strong>RIAS</strong>) is hosted by the <strong>RUC Xiong'an Institute for Future Intelligent Manufacturing</strong> and directed by <strong>Prof. Yongcai Wang</strong>. Anchored in Xiong'an and linked with Beijing campuses, the lab addresses national priorities in AI, future industries, and intelligent unmanned systems, spanning agent systems, visual spatial computing, collaborative perception, and swarm decision-making along a sensing–cognition–decision–action pipeline.
+        With partners from Renmin University of China and peer institutions, the lab is advised by CAS Academician <strong>Xiaohong Guan</strong> and guided by a high-level academic committee.
+      </p>
+      <aside class="about-aside">
+        <h3>Mission</h3>
+        <ul>
+          <li>Provincial key laboratory (discipline category)</li>
+          <li>Platform for real-virtual unmanned systems research</li>
+          <li>Demonstration hub for low-altitude &amp; swarm applications</li>
+          <li>Open base for talent development</li>
+        </ul>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="research">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <p class="sec-eyebrow">Research Directions</p>
+        <h2 class="sec-title">Five Directions</h2>
+      </div>
+      <p class="sec-desc">Five mutually reinforcing thrusts spanning real-virtual mapping, collaborative perception, multi-agent decision-making, cloud-brain platforms and testbeds, and cross-domain deployment.</p>
+    </div>
+    <ul class="dir-list">
+      <li class="dir-item reveal">
+        <div class="dir-num">01</div>
+        <div class="dir-name">Scene Reconstruction &amp; Mapping</div>
+        <div class="dir-desc">Photorealistic indoor/outdoor reconstruction via 3D Gaussian Splatting, fusing geometry, physics, semantics, and texture for cross-domain real-virtual mapping and 4D dynamic virtual training fields.</div>
+      </li>
+      <li class="dir-item reveal">
+        <div class="dir-num">02</div>
+        <div class="dir-name">Swarm Collaborative Perception</div>
+        <div class="dir-desc">Distributed feature extraction, lightweight models, and low-overhead exchange for multi-agent detection, tracking, localization, and situational awareness under weak communication and compute.</div>
+      </li>
+      <li class="dir-item reveal">
+        <div class="dir-num">03</div>
+        <div class="dir-name">Multi-agent Decision &amp; Optimization</div>
+        <div class="dir-desc">Distributed decision-making, task allocation, path planning, and collaborative optimization for heterogeneous unmanned systems in complex, high-interference environments.</div>
+      </li>
+      <li class="dir-item reveal">
+        <div class="dir-num">04</div>
+        <div class="dir-name">Real-virtual Multi-agent Cloud-Brain Platform &amp; Testbed</div>
+        <div class="dir-desc">A real-virtual integrated multi-agent cloud-brain platform and test system spanning sensing aggregation, collaborative assessment, decision scheduling, and closed-loop evaluation—for algorithm validation, system integration, and scenario rehearsal.</div>
+      </li>
+      <li class="dir-item reveal">
+        <div class="dir-num">05</div>
+        <div class="dir-name">Cross-domain Deployment</div>
+        <div class="dir-desc">Ground–air, sea–air, and land–sea–air collaboration for public security, facility inspection, emergency rescue, and industrial logistics—from algorithms to field pilots.</div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- PEOPLE START -->
+<section class="section section-alt" id="people">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <p class="sec-eyebrow">Leadership</p>
+        <h2 class="sec-title">Director</h2>
+      </div>
+      <p class="sec-desc">Leads laboratory development and operations, advancing research and talent cultivation in real-virtual integrated unmanned systems.</p>
+    </div>
+    <div class="people reveal">
+  <img class="people-photo" src="people/wang-yongcai.jpg" alt="Prof. Yongcai Wang" width="132" height="165"/>
+  <div>
+    <p class="people-role">Lab Director</p>
+    <h3 class="people-name"><a href="https://yongcaiwang.github.io/index_en.html">Yongcai Wang</a></h3>
+    <p class="people-bio">Professor and Deputy Chair, Department of Computer Science, Renmin University of China; core faculty of the RUC Xiong'an Institute for Future Intelligent Manufacturing. Research spans multi-agent collaborative perception, visual SLAM, Spatial AI, and unmanned-system detection, with 120+ papers (70+ CCF A/B).</p>
+    <div class="people-links">
+      <a href="https://yongcaiwang.github.io/index_en.html">Homepage</a>
+      <a href="https://yongcaiwang.github.io/students.html">Students</a>
+      <a href="mailto:ycw@ruc.edu.cn">ycw@ruc.edu.cn</a>
+    </div>
+  </div>
+</div>
+  </div>
+</section>
+
+<section class="section" id="academic">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <p class="sec-eyebrow">Academic Committee</p>
+        <h2 class="sec-title">Academic Committee</h2>
+      </div>
+      <p class="sec-desc">Advised by a CAS Academician and leading experts in intelligent unmanned systems.</p>
+    </div>
+    <div class="people-group reveal">
+      <h3 class="people-group-title">Academic Advisor</h3>
+      <div class="person-cards">
+<article class="person-card">
+  <div class="person-card-body">
+    <img class="person-card-photo" src="people/guan-xiaohong.jpg" alt="Xiaohong Guan" width="112" height="140" loading="lazy"/>
+    <div class="person-card-text">
+      <div class="person-card-head"><h3 class="person-card-name"><a href="https://www.au.tsinghua.edu.cn/info/1018/3083.htm" target="_blank" rel="noopener noreferrer">Xiaohong Guan</a></h3></div>
+      <p class="person-card-aff">CAS Academician / Xi'an Jiaotong & Tsinghua</p>
+      <p class="person-card-bio">Systems engineer, IEEE Fellow. Dean of Electronic and Information Engineering at XJTU; Chief Scientist of the MoE Key Lab of Intelligent Networks and Network Security.</p>
+    </div>
+  </div>
+</article>
+      </div>
+    </div>
+    <div class="people-group reveal">
+      <h3 class="people-group-title">Chair & Members</h3>
+      <div class="person-cards">
+<article class="person-card">
+  <div class="person-card-body">
+    <img class="person-card-photo" src="people/zhao-qianchuan.jpg" alt="Qianchuan Zhao" width="112" height="140" loading="lazy"/>
+    <div class="person-card-text">
+      <div class="person-card-head"><span class="person-role-tag">Chair</span><h3 class="person-card-name"><a href="https://www.au.tsinghua.edu.cn/info/1173/2085.htm" target="_blank" rel="noopener noreferrer">Qianchuan Zhao</a></h3></div>
+      <p class="person-card-aff">Professor, Tsinghua; NSFC Distinguished Young Scholar</p>
+      <p class="person-card-bio">Director of CFINS. Research on performance optimization and security control of networked dynamic systems.</p>
+    </div>
+  </div>
+</article>
+<article class="person-card reveal">
+  <div class="person-card-body">
+    <img class="person-card-photo" src="people/jia-qingshan.jpg" alt="Qing-Shan Jia" width="112" height="140" loading="lazy"/>
+    <div class="person-card-text">
+      <div class="person-card-head"><span class="person-role-tag">Member</span><h3 class="person-card-name"><a href="https://www.au.tsinghua.edu.cn/info/1111/1525.htm" target="_blank" rel="noopener noreferrer">Qing-Shan Jia</a></h3></div>
+      <p class="person-card-aff">Professor, Tsinghua; NSFC Distinguished Young Scholar</p>
+      <p class="person-card-bio">Vice Dean for Teaching, Tsinghua GIX. Optimization theory for networked cyber-physical energy systems.</p>
+    </div>
+  </div>
+</article>
+<article class="person-card reveal">
+  <div class="person-card-body">
+    <img class="person-card-photo" src="people/xie-guangming.jpg" alt="Guangming Xie" width="112" height="140" loading="lazy"/>
+    <div class="person-card-text">
+      <div class="person-card-head"><span class="person-role-tag">Member</span><h3 class="person-card-name"><a href="https://www.ai.pku.edu.cn/info/1171/1702.htm" target="_blank" rel="noopener noreferrer">Guangming Xie</a></h3></div>
+      <p class="person-card-aff">Professor, Peking University</p>
+      <p class="person-card-bio">Intelligent biomimetic robots and swarm collaboration. National Natural Science Award (Second Prize).</p>
+    </div>
+  </div>
+</article>
+<article class="person-card reveal">
+  <div class="person-card-body">
+    <img class="person-card-photo" src="people/li-mo.jpg" alt="Mo Li" width="112" height="140" loading="lazy"/>
+    <div class="person-card-text">
+      <div class="person-card-head"><span class="person-role-tag">Member</span><h3 class="person-card-name"><a href="https://cse.hkust.edu.hk/~lim/" target="_blank" rel="noopener noreferrer">Mo Li</a></h3></div>
+      <p class="person-card-aff">Professor, HKUST; IEEE Fellow</p>
+      <p class="person-card-bio">Director of HKUST Low Altitude Economy Research Center. Wireless sensing, IoT, and low-altitude systems. ACM SIGMOBILE Chair.</p>
+    </div>
+  </div>
+</article>
+<article class="person-card reveal">
+  <div class="person-card-body">
+    <img class="person-card-photo" src="people/chai-yunpeng.jpg" alt="Yunpeng Chai" width="112" height="140" loading="lazy"/>
+    <div class="person-card-text">
+      <div class="person-card-head"><span class="person-role-tag">Member</span><h3 class="person-card-name"><a href="http://cloudlab.ruc.edu.cn" target="_blank" rel="noopener noreferrer">Yunpeng Chai</a></h3></div>
+      <p class="person-card-aff">Professor, RUC; Dean, School of Information</p>
+      <p class="person-card-bio">Intelligent computing systems, databases, storage, and cloud computing.</p>
+    </div>
+  </div>
+</article>
+<article class="person-card reveal">
+  <div class="person-card-body">
+    <img class="person-card-photo" src="people/yan-chaobo.jpg" alt="Chaobo Yan" width="112" height="140" loading="lazy"/>
+    <div class="person-card-text">
+      <div class="person-card-head"><span class="person-role-tag">Member</span><h3 class="person-card-name"><a href="https://www.xjtu.edu.cn/jsnr.jsp?urltype=tree.TreeTempUrl&wbtreeid=1632&wbwbxjtuteacherid=1970" target="_blank" rel="noopener noreferrer">Chaobo Yan</a></h3></div>
+      <p class="person-card-aff">Professor, Xi'an Jiaotong University</p>
+      <p class="person-card-bio">Vice Dean. Cyber-physical manufacturing systems and intelligent logistics scheduling.</p>
+    </div>
+  </div>
+</article>
+<article class="person-card reveal">
+  <div class="person-card-body">
+    <img class="person-card-photo" src="people/shen-zhen.jpg" alt="Zhen Shen" width="112" height="140" loading="lazy"/>
+    <div class="person-card-text">
+      <div class="person-card-head"><span class="person-role-tag">Member</span><h3 class="person-card-name"><a href="https://people.ucas.ac.cn/~zhenshen" target="_blank" rel="noopener noreferrer">Zhen Shen</a></h3></div>
+      <p class="person-card-aff">Professor, CASIA</p>
+      <p class="person-card-bio">Intelligent control and complex systems. Extensive patents and awards in automation.</p>
+    </div>
+  </div>
+</article>
+<article class="person-card reveal">
+  <div class="person-card-body">
+    <img class="person-card-photo" src="people/bai-yang.jpg" alt="Yang Bai" width="112" height="140" loading="lazy"/>
+    <div class="person-card-text">
+      <div class="person-card-head"><span class="person-role-tag">Member</span><h3 class="person-card-name">Yang Bai</h3></div>
+      <p class="person-card-aff">Senior Principal Engineer, CETC</p>
+      <p class="person-card-bio">Large-scale UAV swarm control and unmanned systems engineering.</p>
+    </div>
+  </div>
+</article>
+<article class="person-card reveal">
+  <div class="person-card-body">
+    <img class="person-card-photo" src="people/wang-yongcai.jpg" alt="Yongcai Wang" width="112" height="140" loading="lazy"/>
+    <div class="person-card-text">
+      <div class="person-card-head"><span class="person-role-tag">Member</span><h3 class="person-card-name"><a href="https://yongcaiwang.github.io/index_en.html" target="_blank" rel="noopener noreferrer">Yongcai Wang</a></h3></div>
+      <p class="person-card-aff">Professor, RUC; Lab Director</p>
+      <p class="person-card-bio">Multi-agent systems, Spatial AI, collaborative perception, and multi-agent RL. 120+ papers.</p>
+    </div>
+  </div>
+</article>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section" id="management">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <p class="sec-eyebrow">Management Committee</p>
+        <h2 class="sec-title">Management Committee</h2>
+      </div>
+      <p class="sec-desc">Oversees operations, resources, and academia–industry coordination.</p>
+    </div>
+    <div class="person-cards reveal">
+<article class="person-card">
+  <div class="person-card-head"><span class="person-role-tag">Chair</span><h3 class="person-card-name">Jian Shen</h3></div>
+  <p class="person-card-aff">Research Fellow; Vice Dean, RUC Xiong'an Institute for Future Intelligent Manufacturing</p>
+</article>
+<article class="person-card">
+  <div class="person-card-head"><span class="person-role-tag">Member</span><h3 class="person-card-name"><a href="http://cloudlab.ruc.edu.cn" target="_blank" rel="noopener noreferrer">Yunpeng Chai</a></h3></div>
+  <p class="person-card-aff">Professor; Dean, School of Information, Renmin University of China</p>
+</article>
+<article class="person-card">
+  <div class="person-card-head"><span class="person-role-tag">Member</span><h3 class="person-card-name"><a href="http://info.ruc.edu.cn/jsky/szdw/ajxjgcx/jsjkxyjsx1/js2/43edc05040f54656aed4869bb7969de0.htm" target="_blank" rel="noopener noreferrer">Wei Lu</a></h3></div>
+  <p class="person-card-aff">Professor; Vice Dean, School of Information, Renmin University of China</p>
+</article>
+<article class="person-card">
+  <div class="person-card-head"><span class="person-role-tag">Member</span><h3 class="person-card-name"><a href="http://info.ruc.edu.cn/jsky/szdw/ajxjgcx/jjxxglx1/js_5/2d290100ef644d59838c602d85769ae8.htm" target="_blank" rel="noopener noreferrer">Wei Xu</a></h3></div>
+  <p class="person-card-aff">Professor; Vice Dean, School of Information, Renmin University of China</p>
+</article>
+<article class="person-card">
+  <div class="person-card-head"><span class="person-role-tag">Member</span><h3 class="person-card-name">Pijing Bing</h3></div>
+  <p class="person-card-aff">Director of General Office, RUC Xiong'an Institute</p>
+</article>
+<article class="person-card">
+  <div class="person-card-head"><span class="person-role-tag">Member</span><h3 class="person-card-name">Baisong Ren</h3></div>
+  <p class="person-card-aff">Principal Senior Engineer; Director, Xiong'an National Innovation Center</p>
+</article>
+<article class="person-card">
+  <div class="person-card-head"><span class="person-role-tag">Member</span><h3 class="person-card-name">Yan Li</h3></div>
+  <p class="person-card-aff">Tech Manager, Xiong'an National Innovation Center</p>
+</article>
+    </div>
+  </div>
+</section>
+<!-- PEOPLE END -->
+
+<section class="section" id="news">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <p class="sec-eyebrow">News</p>
+        <h2 class="sec-title">News</h2>
+      </div>
+      <p class="sec-desc">Laboratory milestones and selected research highlights.</p>
+    </div>
+    <ul class="news-list reveal">
+      <li class="news-item"><span class="news-date">2026.07.27</span><a class="news-link" href="news/2026-07-27-visit_en.html">Academic Committee Members Mo Li and Zhen Shen Visit to Discuss Laboratory Development</a></li>
+      <li class="news-item"><span class="news-date">2026.07.20</span><a class="news-link" href="news/2026-07-20-approved_en.html">RIAS Key Laboratory Approved; Prof. Yongcai Wang Appointed Director</a></li>
+      <li class="news-item"><span class="news-date">2026.06.30</span><a class="news-link" href="news/2026-06-30-eccv_en.html">ECCV 2026 +1, Congratulations to Kang Yang</a></li>
+      <li class="news-item"><span class="news-date">2026.05.01</span><a class="news-link" href="news/2026-05-01-icml_en.html">ICML 2026 +1, Congratulations to Guoxin Lian</a></li>
+      <li class="news-item"><span class="news-date">2026.02.21</span><a class="news-link" href="news/2026-02-21-cvpr_en.html">CVPR 2026 +2, Congratulations to Peng Wang and Shuo Wang</a></li>
+    </ul>
+    <a class="news-more reveal" href="news/index_en.html">All news →</a>
+  </div>
+</section>
+
+<section class="join-band" id="join">
+  <div class="wrap reveal">
+    <p class="sec-eyebrow">Join Us / Contact</p>
+    <h2 class="sec-title">Join Us</h2>
+    <p>We welcome research undergraduates, M.S., professional master's, direct Ph.D., Ph.D., and Eng.D. candidates interested in real-virtual reconstruction, swarm collaborative perception, multi-agent decision-making, cloud-brain platforms and testbeds, and cross-domain unmanned systems.</p>
+    <p>Strong learning ability, solid English, programming skills, and self-motivation are expected; prior publications or competition awards are a plus.</p>
+    <p>Email: <a class="mail" href="mailto:ycw@ruc.edu.cn">ycw@ruc.edu.cn</a></p>
+    <p>Address: Room 620, Xiong'an High-tech Zone Service Center, Xiong'an Area, China (Hebei) Pilot Free Trade Zone</p>
+    <div class="join-actions">
+      <a class="btn btn-primary" href="mailto:ycw@ruc.edu.cn">Email Us</a>
+      <a class="btn btn-ghost" href="https://yongcaiwang.github.io/index_en.html">Director</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-foot">
+  <div class="foot-inner">
+    <div>
+      <div class="foot-brand"><span class="ri">RI</span><span class="as">AS</span></div>
+      <div>Hebei Provincial Key Laboratory of Real-virtual Integrated Autonomous Systems</div>
+      <div>Host: RUC Xiong'an Institute for Future Intelligent Manufacturing</div>
+    </div>
+    <div>
+      <a href="https://yongcaiwang.github.io/index_en.html">Prof. Yongcai Wang</a> ·
+      <a href="index.html">中文</a> ·
+      <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener">京ICP备2024071883号</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add('is-in'); });
+  }, { threshold: 0.14, rootMargin: '0px 0px -6% 0px' });
+  document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+</script>
+</body>
+</html>

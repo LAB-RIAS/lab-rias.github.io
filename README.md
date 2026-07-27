@@ -1,1 +1,3 @@
-# lab-rias.github.io
+# RIAS Lab Website
+
+https://lab-rias.github.io/

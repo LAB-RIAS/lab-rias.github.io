@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 720" role="img" aria-labelledby="rias-title rias-desc">
+  <title id="rias-title">RIAS</title>
+  <desc id="rias-desc">Hebei Provincial Key Laboratory of Real-virtual Integrated Autonomous Systems / ??????????????????</desc>
+
+  <!-- Mark: virtual?real fusion only -->
+  <g transform="translate(320 210)">
+    <circle r="132" fill="none" stroke="#ae0b2a" stroke-width="8"/>
+    <circle r="118" fill="none" stroke="#b8954a" stroke-width="2"/>
+
+    <!-- Virtual plane -->
+    <g transform="translate(-22 -8) rotate(-18)">
+      <rect x="-70" y="-48" width="140" height="96" rx="10"
+            fill="#b8954a" fill-opacity="0.16"
+            stroke="#b8954a" stroke-width="3" stroke-dasharray="8 6"/>
+    </g>
+    <!-- Real plane -->
+    <g transform="translate(22 10) rotate(16)">
+      <rect x="-70" y="-48" width="140" height="96" rx="10"
+            fill="#ae0b2a" stroke="#8a0821" stroke-width="1"/>
+    </g>
+    <!-- Fusion point -->
+    <circle r="14" fill="#fff"/>
+    <circle r="8" fill="#b8954a"/>
+  </g>
+
+  <!-- Exact names -->
+  <text x="320" y="400" text-anchor="middle"
+        font-family="Georgia, 'Times New Roman', serif"
+        font-size="72" font-weight="600" letter-spacing="12">
+    <tspan fill="#ae0b2a">RI</tspan><tspan fill="#b8954a">AS</tspan>
+  </text>
+
+  <text x="320" y="448" text-anchor="middle"
+        font-family="Georgia, 'Times New Roman', serif"
+        font-size="20" fill="#3a3f4d" letter-spacing="1.2">
+    Real-virtual Integrated Autonomous Systems
+  </text>
+
+  <text x="320" y="500" text-anchor="middle"
+        font-family="Georgia, 'Times New Roman', serif"
+        font-size="15" fill="#6b7280">
+    <tspan x="320" dy="0">Hebei Provincial Key Laboratory of</tspan>
+    <tspan x="320" dy="22">Real-virtual Integrated Autonomous Systems</tspan>
+  </text>
+
+  <text x="320" y="572" text-anchor="middle"
+        font-family="'Noto Serif SC', 'Songti SC', 'STSong', serif"
+        font-size="22" fill="#14171f" letter-spacing="2">
+    ??????????????????
+  </text>
+</svg>
